@@ -1,3 +1,11 @@
+# Load ~/.aliases
+for file in ~/.{aliases}; do
+    [ -r "$file" ] && source "$file"
+done
+unset file
+
+# init z https://github.com/rupa/z
+. ~/z/z.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
