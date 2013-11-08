@@ -1,8 +1,4 @@
-# Load ~/.aliases
-for file in ~/.{aliases}; do
-    [ -r "$file" ] && source "$file"
-done
-unset file
+source ~/.bashrc
 
 # init z https://github.com/rupa/z
 . ~/z/z.sh

@@ -13,7 +13,7 @@ My basic setup is captured in `install-deps.sh` which adds z, for now.
 * `.vimrc`, `.vim` - vim configuration, obviously.
 
 #### Shell environments
-* `.aliases`
+* `.bash_aliases`
 * `.bash_profile`
 * `.bashrc`
 * `.functions`
