@@ -1,34 +1,10 @@
-# Junerey's dotfiles
+## Developer Mac Setup 👩🏻‍💻👨🏽‍💻👨🏻‍💻👩🏿‍💻
 
-This repo is for my own good. But you can still add some suggestions for the improvement of my dotfiles.
-
-## Install necessary apps
-
-My basic setup is captured in `install-deps.sh` which adds z, for now.
-
-
-## Overview of files
-
-#### Automatic config
-* `.vimrc`, `.vim` - vim configuration, obviously.
-
-#### Shell environments
-* `.bash_aliases`
-* `.bash_profile`
-* `.bashrc`
-* `.functions`
-
-#### Manual run
-* `install-deps.sh` - random apps I need to be installed
-
-#### Git
-* `.git`
-* `.gitattributes`
-* `.gitconfig`
-* `.gitignore`
-
-## Installation
-
-```bash
-git clone https://github.com/junereycasuga/dotfiles.git && cd dotfiles && ./sync.sh
-```
+1. Update macOS to the latest version with the App Store
+2. Install Xcode from the App Store, open it and accept the license agreement
+3. Install macOS Command Line Tools by running `xcode-select --install`
+4. Copy your public and private SSH keys to `~/.ssh` and make sure they're set to `600`
+5. Clone this repo to `~/.dotfiles`
+6. Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
+7. Run `install.sh` to start the installation
+8. Restart your computer to finalize the process
