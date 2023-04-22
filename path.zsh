@@ -37,5 +37,3 @@ export NODE_ENV="development"
 # set up hh colours
 export HSTR_CONFIG=hicolor,case-sensitive
 export HSTR_CONFIG=keywords-matching,hicolor,debug
-
-export ASDF_DIR=$(brew --prefix asdf)

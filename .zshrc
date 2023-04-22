@@ -81,4 +81,11 @@ source $ZSH_CUSTOM/path.zsh
 source $ZSH_CUSTOM/aliases.zsh
 
 autoload -U +X bashcompinit && bashcompinit
+
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
 complete -o nospace -C /usr/local/bin/terraform terraform

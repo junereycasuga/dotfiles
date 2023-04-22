@@ -19,9 +19,9 @@ echo "Installing dependencies..."
 brew tap homebrew/bundle
 brew bundle
 
-echo "Setting up homebrew auto-update..."
-mkdir -p ~/Library/LaunchAgents
-brew autoupdate --start --cleanup
+# echo "Setting up homebrew auto-update..."
+# mkdir -p ~/Library/LaunchAgents
+# brew autoupdate --start --cleanup
 
 # Backups current .zshrc if found and is not a symlink
 if [ -f $HOME/.zshrc ] && [ ! -L $HOME/.zshrc ]; then
@@ -38,8 +38,16 @@ ln -sf "$HOME/.dotfiles/.tool-versions" "$HOME/.tool-versions"
 
 # Install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-git checkout -b v0.8.0
+
+# Install z
+git clone git@github.com:rupa/z.git ~/z
 
 # Add ASDF plugins
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git;
+echo "Installing Go asdf plugin"
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+
+echo  "Installing Terraform asdf plugin"
+asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+
+echo "Installing Node.js asdf plugin"
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
