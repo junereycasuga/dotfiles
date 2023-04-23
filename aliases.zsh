@@ -30,8 +30,8 @@ alias gst='git status'
 # TMUX
 alias tmux="tmux -2"
 
-# NVIM
-alias vim="nvim"
+# Vim
+alias v="vim"
 
 # Terraform
 alias t='terraform'
@@ -43,6 +43,8 @@ export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
+# Source asdf
 . "$HOME/.asdf/asdf.sh"
 
+# Source z
 . "$HOME/z/z.sh"

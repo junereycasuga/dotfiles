@@ -30,7 +30,7 @@ brew "libyaml"
 brew "reattach-to-user-namespace"
 brew "the_silver_searcher"
 brew "tmux"
-brew "neovim"
+brew "vim"
 brew "watchman"
 brew "jq"
 brew "cmake"
@@ -43,21 +43,13 @@ brew "tflint"
 brew "antibody"
 brew "exa"
 
-# GitHub
-brew "hub"
-brew "gh"
-
 # AWS
 brew "awscli"
 
 # Apps
-cask "alfred"
 cask "docker"
-cask "github"
 cask "visual-studio-code"
 cask "dash"
-cask "grammarly"
-cask "macdown"
 cask "postman"
 
 # Fonts
