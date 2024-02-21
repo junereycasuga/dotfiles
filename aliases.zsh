@@ -31,7 +31,7 @@ alias gst='git status'
 alias tmux="tmux -2"
 
 # Vim
-alias v="vim"
+alias v="nvim"
 
 # Terraform
 alias t='terraform'

@@ -1,12 +1,13 @@
 # Make sure coreutils are loaded before system commands
 # I've disabled this for now because I only use "ls" which is
 # referenced in my aliases.zsh file directly.
-#export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+# export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # Local bin directories before anything else
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH"
 
 # Where to find the zsh history
 export HISTFILE=${HOME}/.zsh_history

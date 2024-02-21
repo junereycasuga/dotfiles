@@ -42,6 +42,10 @@ brew "shellcheck"
 brew "tflint"
 brew "antibody"
 brew "exa"
+brew "ripgrep"
+brew "1password-cli"
+brew "zoxide"
+brew "fzf"
 
 # AWS
 brew "awscli"
@@ -49,8 +53,9 @@ brew "awscli"
 # Apps
 cask "docker"
 cask "visual-studio-code"
-cask "dash"
+# cask "dash"
 cask "postman"
+cask "proxyman"
 
 # Fonts
 cask "font-hack-nerd-font"

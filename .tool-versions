@@ -1,3 +1,4 @@
-terraform 1.4.4
-golang 1.20.2
-nodejs 20.0.0
+terraform 1.4.6
+golang 1.21.1
+nodejs 16.16.0
+rust 1.71.1

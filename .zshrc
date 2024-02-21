@@ -65,6 +65,9 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+# paths
+source $ZSH_CUSTOM/path.zsh
+
 source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-autosuggestions
@@ -75,8 +78,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/command-not-found
 antibody bundle robbyrussell/oh-my-zsh path:plugins/common-aliases
 
-# paths
-source $ZSH_CUSTOM/path.zsh
 # aliases
 source $ZSH_CUSTOM/aliases.zsh
 
@@ -89,3 +90,11 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+# Makes a directory and changes to it.
+function mkdcd() {
+  [[ -n "$1" ]] && mkdir -p "$1" && cd "$1"
+}
+
+# initialize zoxide
+eval "$(zoxide init zsh)"
