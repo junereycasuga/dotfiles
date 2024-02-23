@@ -1,0 +1,9 @@
+\.git
+\.gitignore
+Brewfile
+Brewfile.lock.json
+aliases.zsh
+install.zsh
+path.zsh
+
+^/README.*

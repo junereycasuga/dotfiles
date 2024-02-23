@@ -24,23 +24,23 @@ brew bundle
 # brew autoupdate --start --cleanup
 
 # Backups current .zshrc if found and is not a symlink
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-  echo "Found existing .zshrc, backup to .zshrc.backup..."
-  cp "$HOME/.zshrc" "$HOME/.zshrc.backup"
-fi
+# if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+#   echo "Found existing .zshrc, backup to .zshrc.backup..."
+#   cp "$HOME/.zshrc" "$HOME/.zshrc.backup"
+# fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf "$HOME/.zshrc"
-ln -s "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc"
+# rm -rf "$HOME/.zshrc"
+# ln -s "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc"
 
 # Configures ASDF tool and default versions
-ln -sf "$HOME/.dotfiles/.tool-versions" "$HOME/.tool-versions"
+# ln -sf "$HOME/.dotfiles/.tool-versions" "$HOME/.tool-versions"
+
+# Symlink dirs/files using GNU Stow
+stow .
 
 # Install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
-# # Install z
-# git clone git@github.com:rupa/z.git ~/z
 
 # Add ASDF plugins
 echo "Installing Go asdf plugin"

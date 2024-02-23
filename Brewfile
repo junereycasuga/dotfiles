@@ -46,6 +46,7 @@ brew "ripgrep"
 brew "1password-cli"
 brew "zoxide"
 brew "fzf"
+brew "stow"
 
 # AWS
 brew "awscli"
