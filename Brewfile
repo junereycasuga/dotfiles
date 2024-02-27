@@ -5,58 +5,56 @@ tap "homebrew/services"
 tap "domt4/autoupdate"
 
 # Binaries
-brew "automake"
-brew "autoconf"
+brew "automake" # Tool for automatically generating Makefiles
+brew "autoconf" # Tool for automatically configuring source code
 brew "bash" # Bash 4
 brew "coreutils" # Those that come with macOS are outdated
-brew "ack"
-brew "zlib"
-brew "git"
-brew "git-lfs"
-brew "grep"
-brew "libyaml"
-brew "readline"
-brew "libxslt"
-brew "libtool"
-brew "unixodbc"
-brew "mas"
+brew "ack" # Search tool like grep
+brew "zlib" # Compression library
+brew "git" # Version control
+brew "git-lfs" # Git extension for versioning large files
+brew "grep" # Search tool
+brew "libyaml" # YAML parser
+brew "readline" # Library for command-line editing
+brew "libxslt" # XSLT C library for GNOME
+brew "libtool" # Generic library support script
+brew "unixodbc" # ODBC driver manager
+brew "mas" # Mac App Store CLI
 brew "pkg-config" # https://github.com/driesvints/dotfiles/issues/20
-brew "trash"
-brew "tree"
-brew "zsh"
-brew "zsh-completions"
-brew "openssl"
-brew "libyaml"
-brew "reattach-to-user-namespace"
-brew "the_silver_searcher"
-brew "tmux"
-brew "vim"
-brew "watchman"
-brew "jq"
-brew "cmake"
-brew "diff-so-fancy"
-brew "wxwidgets"
-brew "hstr"
-brew "httpie"
-brew "shellcheck"
-brew "tflint"
-brew "antibody"
-brew "exa"
-brew "ripgrep"
-brew "1password-cli"
-brew "zoxide"
-brew "fzf"
-brew "stow"
+brew "trash" # Move files and folders to the trash
+brew "tree" # List contents of directories in a tree-like format
+brew "zsh" # Zsh
+brew "zsh-completions" # Additional completion definitions for Zsh
+brew "openssl" # SSL/TLS cryptography library
+brew "reattach-to-user-namespace" # Reattach process (e.g., tmux) to the user's namespace
+brew "the_silver_searcher" # Code-search similar to ack
+brew "tmux" # Terminal multiplexer
+brew "neovim" # Vim-fork focused on extensibility and usability
+brew "watchman" # File watching service
+brew "jq" # JSON parser
+brew "cmake" # Cross-platform make
+brew "diff-so-fancy" # Better git diff
+brew "wxwidgets" # C++ library for GUI
+brew "hstr" # Improved command history
+brew "httpie" # cURL with colors
+brew "shellcheck" # Shell script analysis tool
+brew "tflint" # Terraform linter
+brew "antibody" # Zsh plugin manager
+brew "exa" # ls replacement
+brew "ripgrep" # grep replacement
+brew "1password-cli" # 1Password CLI
+brew "zoxide" # cd replacement
+brew "fzf" # Fuzzy finder
+brew "stow" # Symlink farm manager
 
 # AWS
-brew "awscli"
+brew "awscli" # AWS CLI
 
 # Apps
-cask "docker"
-cask "visual-studio-code"
-# cask "dash"
-cask "postman"
-cask "proxyman"
+cask "docker" # Docker
+cask "visual-studio-code" # Visual Studio Code
+cask "postman" # Postman
+cask "proxyman" # Proxyman
 
 # Fonts
 cask "font-hack-nerd-font"
