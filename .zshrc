@@ -1,6 +1,9 @@
 # Path to your dotfiles installation.
 export DOTFILES=$HOME/.dotfiles
 
+# Set nvim as default editor for kubernetes
+export KUBE_EDITOR=nvim
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 HIST_STAMPS="dd/mm/yyyy"
@@ -47,20 +50,22 @@ SPACESHIP_CHAR_SUFFIX=' '
 SPACESHIP_PROMPT_ADD_NEWLINE=true
 SPACESHIP_PROMPT_SEPARATE_LINE=true
 SPACESHIP_DIR_PREFIX=false
+SPACESHIP_TIME_SHOW=true
 
 SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
   user          # Username section
   host          # Hostname section
   dir           # Current directory section
   aws           # Amazon Web Services section
   git           # Git section (git_branch + git_status)
   node          # Node.js section
-  elixir        # Elixir section
-  ruby          # Ruby section
   golang        # Go section
+  rust          # Rust section
+  lua           # LuaJIT section
   package       # npm
   docker        # Docker section
+  time          # Time stamps section
+  exec_time     # Execution time
   line_sep      # Line break
   char          # Prompt character
 )

@@ -7,7 +7,6 @@ alias c="clear"
 
 # Directories
 alias dotfiles="cd $DOTFILES"
-alias sites="cd /Volumes/GoogleDrive/My\ Drive/Sites"
 
 # JS
 alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
@@ -36,6 +35,8 @@ alias v="nvim"
 # Terraform
 alias t='terraform'
 
+alias db='gobang'
+
 # HSTR configuration - add this to ~/.bashrc
 alias hh=hstr                    # hh to be alias for hstr
 export HSTR_CONFIG=hicolor        # get more colors
@@ -45,6 +46,3 @@ bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
 # Source asdf
 . "$HOME/.asdf/asdf.sh"
-
-# Source z
-. "$HOME/z/z.sh"

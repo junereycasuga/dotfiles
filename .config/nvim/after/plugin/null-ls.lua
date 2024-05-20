@@ -8,14 +8,10 @@ null_ls.setup({
 		formatting.gofmt,
 		formatting.goimports,
 		formatting.terraform_fmt,
-		formatting.eslint_d,
 		formatting.prettier,
 		-- formatting.codespell,
-		formatting.fixjson,
 		formatting.yamlfmt,
-		formatting.trim_whitespace,
 		formatting.stylua,
-		formatting.templ
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

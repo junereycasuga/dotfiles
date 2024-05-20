@@ -52,7 +52,9 @@ require('mason-lspconfig').setup({
 		"rust_analyzer",
 		"jsonls",
 		"html",
-		"htmx"
+		"htmx",
+		"jsonls",
+		"templ"
 	},
 	handlers = {
 		lsp.default_setup,

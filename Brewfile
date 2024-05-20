@@ -46,6 +46,8 @@ brew "1password-cli" # 1Password CLI
 brew "zoxide" # cd replacement
 brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
+brew "entr" # Run arbitrary commands when files change
+brew "tokei" # Code statistics
 
 # AWS
 brew "awscli" # AWS CLI
@@ -55,6 +57,9 @@ cask "docker" # Docker
 cask "visual-studio-code" # Visual Studio Code
 cask "postman" # Postman
 cask "proxyman" # Proxyman
+cask "spacelauncher" # Space Launcher
+cask "raycast" # Raycast
+cask "kitty" # Kitty terminal emulator
 
 # Fonts
 cask "font-hack-nerd-font"
