@@ -48,6 +48,8 @@ brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
 brew "entr" # Run arbitrary commands when files change
 brew "tokei" # Code statistics
+brew "koekeishiya/formulae/skhd" # Hotkey daemon
+brew "koekeishiya/formulae/yabai" # Tiling window manager
 
 # AWS
 brew "awscli" # AWS CLI
