@@ -50,6 +50,8 @@ brew "entr" # Run arbitrary commands when files change
 brew "tokei" # Code statistics
 brew "koekeishiya/formulae/skhd" # Hotkey daemon
 brew "koekeishiya/formulae/yabai" # Tiling window manager
+brew "orbstack" # Docker Desktop alternative
+brew "shortcat" # Keyboard productivity app
 
 # AWS
 brew "awscli" # AWS CLI
@@ -62,6 +64,8 @@ cask "proxyman" # Proxyman
 cask "spacelauncher" # Space Launcher
 cask "raycast" # Raycast
 cask "kitty" # Kitty terminal emulator
+cask "keycastr" # KeyCastr
+cask "redisinsight" # RedisInsight
 
 # Fonts
 cask "font-hack-nerd-font"
