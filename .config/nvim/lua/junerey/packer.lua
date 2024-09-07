@@ -13,6 +13,8 @@ return require("packer").startup(function(use)
 	--  Packer can manage itself
 	use("wbthomason/packer.nvim")
 
+	use("nvim-lua/plenary.nvim")
+
 	-- Telescope for fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -102,4 +104,10 @@ return require("packer").startup(function(use)
 	use("CopilotC-Nvim/CopilotChat.nvim")
 
 	use("ThePrimeagen/vim-be-good")
+
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } }
+	})
 end)

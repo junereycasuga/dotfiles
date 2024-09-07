@@ -35,8 +35,8 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+require("mason").setup({})
+require("mason-lspconfig").setup({
 	ensure_installed = {
 		"gopls",
 		"terraformls",
@@ -54,10 +54,21 @@ require('mason-lspconfig').setup({
 		"html",
 		"htmx",
 		"jsonls",
-		"templ"
+		"templ",
 	},
 	handlers = {
-		lsp.default_setup,
+		-- lsp.default_setup,
+		function(server_name) -- default handler (optional)
+			-- https://github.com/neovim/nvim-lspconfig/pull/3232
+			if server_name == "tsserver" then
+				server_name = "ts_ls"
+			end
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			require("lspconfig")[server_name].setup({
+
+				capabilities = capabilities,
+			})
+		end,
 	},
 })
 
