@@ -135,6 +135,14 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
+alt-d = 'focus-monitor --wrap-around down'
+alt-u = 'focus-monitor --wrap-around up'
+alt-shift-d = 'move-node-to-monitor --wrap-around down'
+alt-shift-u = 'move-node-to-monitor --wrap-around up'
+
+alt-shift-e = 'balance-sizes'
+alt-shift-r = 'flatten-workspace-tree'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
 
@@ -153,4 +161,36 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+if.app-id = "net.kovidgoyal.kitty"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "com.hnc.Discord"
+run = "move-node-to-workspace C"
+
+[[on-window-detected]]
+if.app-id = "com.tinyspeck.slackmacgap"
+run = "move-node-to-workspace C"
+
+[[on-window-detected]]
+if.app-id ="com.microsoft.teams2"
+run = "move-node-to-workspace C"
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = "move-node-to-workspace M"
+
+[[on-window-detected]]
+if.app-id = "com.flexibits.fantastical2.mac"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.readdle.SparkDesktop.appstore"
+run = "layout floating"
 
