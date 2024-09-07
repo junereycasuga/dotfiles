@@ -48,8 +48,6 @@ brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
 brew "entr" # Run arbitrary commands when files change
 brew "tokei" # Code statistics
-brew "koekeishiya/formulae/skhd" # Hotkey daemon
-brew "koekeishiya/formulae/yabai" # Tiling window manager
 brew "orbstack" # Docker Desktop alternative
 brew "shortcat" # Keyboard productivity app
 
@@ -66,6 +64,7 @@ cask "raycast" # Raycast
 cask "kitty" # Kitty terminal emulator
 cask "keycastr" # KeyCastr
 cask "redisinsight" # RedisInsight
+cask "nikitabobko/tap/aerospace" # i3-like window manager
 
 # Fonts
 cask "font-hack-nerd-font"
