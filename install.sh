@@ -37,6 +37,8 @@ stow zsh
 stow kitty
 stow tmux
 stow nvim
+# stow skhd
+# stow yabai
 stow aerospace
 stow asdf
 
