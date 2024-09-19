@@ -42,7 +42,7 @@ require("mason-lspconfig").setup({
 		"terraformls",
 		"tflint",
 		"eslint",
-		"tsserver",
+		"ts_ls",
 		"bashls",
 		"yamlls",
 		"templ",
@@ -57,18 +57,18 @@ require("mason-lspconfig").setup({
 		"templ",
 	},
 	handlers = {
-		-- lsp.default_setup,
-		function(server_name) -- default handler (optional)
-			-- https://github.com/neovim/nvim-lspconfig/pull/3232
-			if server_name == "tsserver" then
-				server_name = "ts_ls"
-			end
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			require("lspconfig")[server_name].setup({
+		lsp.default_setup,
+		-- 	function(server_name) -- default handler (optional)
+		-- 		-- https://github.com/neovim/nvim-lspconfig/pull/3232
+		-- 		if server_name == "tsserver" then
+		-- 			server_name = "ts_ls"
+		-- 		end
+		-- 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- 		require("lspconfig")[server_name].setup({
 
-				capabilities = capabilities,
-			})
-		end,
+		-- 			capabilities = capabilities,
+		-- 		})
+		-- 	end,
 	},
 })
 

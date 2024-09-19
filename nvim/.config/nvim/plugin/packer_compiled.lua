@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/junereycasuga/.local/share/nvim/site/pack/packer/start/awesome-vim-colorschemes",
     url = "https://github.com/rafi/awesome-vim-colorschemes"
   },
+  cattpuccin = {
+    loaded = true,
+    path = "/Users/junereycasuga/.local/share/nvim/site/pack/packer/start/cattpuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/junereycasuga/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",

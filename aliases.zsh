@@ -2,14 +2,11 @@
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias reloadcli="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-alias ll='exa --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --across'
+alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --across'
 alias c="clear"
 
 # Directories
 alias dotfiles="cd $DOTFILES"
-
-# JS
-alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
 
 # Docker
 alias d='docker'
@@ -27,7 +24,7 @@ alias gsp='git smart-pull'
 alias gst='git status'
 
 # TMUX
-alias tmux="tmux -2"
+alias tmux="tmux"
 
 # Vim
 alias v="nvim"

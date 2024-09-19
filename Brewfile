@@ -40,7 +40,7 @@ brew "httpie" # cURL with colors
 brew "shellcheck" # Shell script analysis tool
 brew "tflint" # Terraform linter
 brew "antibody" # Zsh plugin manager
-brew "exa" # ls replacement
+brew "eza" # modern ls replacement
 brew "ripgrep" # grep replacement
 brew "1password-cli" # 1Password CLI
 brew "zoxide" # cd replacement

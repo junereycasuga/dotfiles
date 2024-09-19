@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 
 	-- color schemes
 	use({ "rafi/awesome-vim-colorschemes" })
+	use({ "catppuccin/nvim", as = "cattpuccin" })
 
 	-- LSP
 	use({
@@ -56,7 +57,7 @@ return require("packer").startup(function(use)
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
-			{                         -- Optional
+			{ -- Optional
 				"williamboman/mason.nvim",
 				run = function()
 					pcall(vim.cmd, "MasonUpdate")
@@ -65,9 +66,9 @@ return require("packer").startup(function(use)
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },  -- Required
+			{ "hrsh7th/nvim-cmp" }, -- Required
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "L3MON4D3/LuaSnip" },  -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	})
 
@@ -108,6 +109,6 @@ return require("packer").startup(function(use)
 	use({
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		requires = { { "nvim-lua/plenary.nvim" } }
+		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 end)

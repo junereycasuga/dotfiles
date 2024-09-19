@@ -193,4 +193,3 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id = "com.readdle.SparkDesktop.appstore"
 run = "layout floating"
-
