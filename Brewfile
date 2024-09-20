@@ -48,13 +48,14 @@ brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
 brew "entr" # Run arbitrary commands when files change
 brew "tokei" # Code statistics
-brew "orbstack" # Docker Desktop alternative
-brew "shortcat" # Keyboard productivity app
 
 # AWS
 brew "awscli" # AWS CLI
 
 # Apps
+brew "bruno" # API Client
+brew "orbstack" # Docker Desktop alternative
+brew "shortcat" # Keyboard productivity app
 cask "docker" # Docker
 cask "visual-studio-code" # Visual Studio Code
 cask "postman" # Postman
