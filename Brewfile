@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "domt4/autoupdate"
+tap "FelixKratz/formulae"
 
 # Binaries
 brew "automake" # Tool for automatically generating Makefiles
@@ -66,6 +67,7 @@ cask "kitty" # Kitty terminal emulator
 cask "keycastr" # KeyCastr
 cask "redisinsight" # RedisInsight
 cask "nikitabobko/tap/aerospace" # i3-like window manager
+brew "borders" # Add colored borders to user windows
 
 # Fonts
 cask "font-hack-nerd-font"
