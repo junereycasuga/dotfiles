@@ -101,3 +101,5 @@ lsp.set_sign_icons({
 	hint = "",
 	information = "",
 })
+
+vim.filetype.add({ extension = { templ = "templ" } })
