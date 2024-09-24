@@ -118,15 +118,15 @@ alt-p = 'workspace P'
 alt-t = 'workspace T'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-b = 'move-node-to-workspace B'
-alt-shift-c = 'move-node-to-workspace C'
-alt-shift-m = 'move-node-to-workspace M'
-alt-shift-p = 'move-node-to-workspace P'
-alt-shift-t = 'move-node-to-workspace T'
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-b = ['move-node-to-workspace B', 'workspace B']
+alt-shift-c = ['move-node-to-workspace C', 'workspace C']
+alt-shift-m = ['move-node-to-workspace M', 'workspace M']
+alt-shift-p = ['move-node-to-workspace P', 'workspace P']
+alt-shift-t = ['move-node-to-workspace T', 'workspace T']
 
 alt-shift-f = 'fullscreen'
 
@@ -137,8 +137,8 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-d = 'focus-monitor --wrap-around down'
 alt-u = 'focus-monitor --wrap-around up'
-alt-shift-d = 'move-node-to-monitor --wrap-around down'
-alt-shift-u = 'move-node-to-monitor --wrap-around up'
+alt-shift-d = ['move-node-to-monitor --wrap-around down', 'focus-monitor --wrap-around down']
+alt-shift-u = ['move-node-to-monitor --wrap-around up', 'focus-monitor --wrap-around up']
 
 alt-shift-e = 'balance-sizes'
 alt-shift-r = 'flatten-workspace-tree'
