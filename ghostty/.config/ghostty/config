@@ -1,0 +1,5 @@
+theme=catppuccin-macchiato
+background=#07070a
+background-opacity=0.8
+background-blur-radius=30
+font-size=14

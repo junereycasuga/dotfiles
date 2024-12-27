@@ -73,15 +73,12 @@ SPACESHIP_PROMPT_ORDER=(
 # paths
 source $ZSH_CUSTOM/path.zsh
 
-source <(antibody init)
-antibody bundle denysdovhan/spaceship-prompt
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
-antibody bundle zdharma/fast-syntax-highlighting
-antibody bundle zsh-users/zsh-history-substring-search
-antibody bundle robbyrussell/oh-my-zsh path:plugins/git
-antibody bundle robbyrussell/oh-my-zsh path:plugins/command-not-found
-antibody bundle robbyrussell/oh-my-zsh path:plugins/common-aliases
+# Clone antidote if necessary.
+[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+antidote load
 
 # aliases
 source $ZSH_CUSTOM/aliases.zsh

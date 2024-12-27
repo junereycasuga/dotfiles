@@ -49,6 +49,9 @@ brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
 brew "entr" # Run arbitrary commands when files change
 brew "tokei" # Code statistics
+brew "htop" # Improved top
+brew "btop" # Better top
+brew "k9s" # Kubernetes CLI
 
 # AWS
 brew "awscli" # AWS CLI
