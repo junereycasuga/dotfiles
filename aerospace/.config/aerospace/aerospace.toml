@@ -179,7 +179,7 @@ alt-shift-l = ['join-with right', 'mode main']
 6 = ['secondary']
 
 [[on-window-detected]]
-if.app-id = "net.kovidgoyal.kitty"
+if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]

@@ -1,5 +1,21 @@
-theme=catppuccin-macchiato
-background=#07070a
-background-opacity=0.8
-background-blur-radius=30
-font-size=14
+# Window
+window-theme = dark
+
+# Colors
+theme = catppuccin-macchiato
+background = #07070a
+background-opacity = 0.8
+background-blur-radius = 30
+
+# Fonts
+font-size = 16
+
+# Cursor
+cursor-style=block
+cursor-style-blink=false
+
+# Mouse
+mouse-hide-while-typing = true
+
+# macOS
+macos-titlebar-style=transparent

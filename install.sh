@@ -34,7 +34,7 @@ rm -rf "$HOME/.zshrc"
 stow zsh
 
 # Symlink other dirs/files using GNU Stow
-stow kitty
+stow ghostty
 stow tmux
 stow nvim
 # stow skhd
