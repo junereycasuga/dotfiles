@@ -8,14 +8,14 @@ background-blur-radius = 30
 font-size = 16
 
 # Cursor
-cursor-style=block
-cursor-style-blink=false
+cursor-style = block
+cursor-style-blink = false
 
 # Mouse
 mouse-hide-while-typing = true
 
 # macOS
-macos-titlebar-style=tabs
+macos-titlebar-style = tabs
 
 # Keybindings
 keybind = cmd+shift+t=toggle_quick_terminal
