@@ -5,6 +5,12 @@ alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --across'
 alias c="clear"
 
+alias ~="cd ~"
+alias desktop="cd $HOME/Desktop"
+alias downloads="cd $HOME/Downloads"
+alias documents="cd $HOME/Documents"
+alias projects="cd $HOME/projects"
+
 # Directories
 alias dotfiles="cd $DOTFILES"
 
