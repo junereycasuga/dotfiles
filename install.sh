@@ -47,10 +47,13 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 # Add ASDF plugins
 echo "Installing Go asdf plugin"
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+
+echo "Install Zig asdf plugin"
+asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git
 
 echo  "Installing Terraform asdf plugin"
-asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
 echo "Installing Node.js asdf plugin"
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
