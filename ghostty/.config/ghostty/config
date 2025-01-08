@@ -6,6 +6,7 @@ background-blur-radius = 30
 
 # Fonts
 font-size = 16
+font-feature = -liga
 
 # Cursor
 cursor-style = block
