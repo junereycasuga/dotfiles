@@ -40,6 +40,11 @@ alias t='terraform'
 
 alias db='gobang'
 
+aero_windows() {
+  aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
+}
+alias ff='aero_windows'
+
 # HSTR configuration - add this to ~/.bashrc
 alias hh=hstr                    # hh to be alias for hstr
 export HSTR_CONFIG=hicolor        # get more colors
