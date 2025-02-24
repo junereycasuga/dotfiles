@@ -114,3 +114,5 @@ export FZF_TMUX_OPTS=" -p90%,79% "
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/junereycasuga/.lmstudio/bin"
