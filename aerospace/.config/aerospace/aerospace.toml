@@ -158,6 +158,7 @@ alt-b = ['exec-and-forget open -a "Brave Browser"']
 alt-s = ['exec-and-forget open -a "Spark Desktop"']
 alt-c = ['exec-and-forget open -a "Calendar"']
 alt-z = ['exec-and-forget open -a "Zen Browser"']
+alt-o = ['exec-and-forget open -a "Obsidian"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
