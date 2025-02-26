@@ -156,6 +156,8 @@ alt-shift-semicolon = 'mode service'
 alt-g = ['exec-and-forget open -a "Ghostty"']
 alt-b = ['exec-and-forget open -a "Brave Browser"']
 alt-s = ['exec-and-forget open -a "Spark Desktop"']
+alt-c = ['exec-and-forget open -a "Calendar"']
+alt-z = ['exec-and-forget open -a "Zen Browser"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -183,19 +185,15 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = "com.hnc.Discord"
-run = "move-node-to-workspace C"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
-run = "move-node-to-workspace C"
+run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id ="com.microsoft.teams2"
-run = "move-node-to-workspace C"
+run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = "com.spotify.client"
