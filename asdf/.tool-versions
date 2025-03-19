@@ -1,4 +1,4 @@
-terraform 1.4.6
+terraform 1.11.0
 golang 1.22.0
 nodejs 20.9.0
 rust 1.71.1
