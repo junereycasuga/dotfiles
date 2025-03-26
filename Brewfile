@@ -59,9 +59,9 @@ brew "fd" # FD
 brew "awscli" # AWS CLI
 
 # Apps
-brew "bruno" # API Client
-brew "orbstack" # Docker Desktop alternative
-brew "shortcat" # Keyboard productivity app
+cask "bruno" # API Client
+cask "orbstack" # Docker Desktop alternative
+cask "shortcat" # Keyboard productivity app
 cask "brave-browser" # Brave Browser
 cask "readdle-spark" # Spark Email client
 cask "obsidian" # Obsidian
@@ -70,7 +70,6 @@ cask "1password" # 1Password Password manager
 # cask "visual-studio-code" # Visual Studio Code
 cask "postman" # Postman
 cask "proxyman" # Proxyman
-cask "spacelauncher" # Space Launcher
 cask "raycast" # Raycast
 # cask "kitty" # Kitty terminal emulator
 cask "ghostty" # Ghostty

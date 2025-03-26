@@ -7,7 +7,6 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget sketchybar --reload',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=6.0 blacklist="iPhone Mirroring"'
 ]
 
@@ -186,7 +185,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
@@ -210,6 +209,10 @@ run = "layout floating"
 
 [[on-window-detected]]
 if.app-id = "com.readdle.SparkDesktop.appstore"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.readdle.SparkDesktop"
 run = "layout floating"
 
 [[on-window-detected]]

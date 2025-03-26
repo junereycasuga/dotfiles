@@ -16,12 +16,11 @@ brew update --force # https://github.com/Homebrew/brew/issues/1151
 
 # Install all our dependencies with bundle (See Brewfile)
 echo "Installing dependencies..."
-brew tap homebrew/bundle
 brew bundle
 
 # echo "Setting up homebrew auto-update..."
-# mkdir -p ~/Library/LaunchAgents
-# brew autoupdate --start --cleanup
+mkdir -p ~/Library/LaunchAgents
+brew autoupdate --start --cleanup
 
 # Backups current .zshrc if found and is not a symlink
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
@@ -41,9 +40,6 @@ stow nvim
 # stow yabai
 stow aerospace
 stow asdf
-
-# Install asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 # Add ASDF plugins
 echo "Installing Go asdf plugin"
