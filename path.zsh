@@ -39,4 +39,5 @@ export NODE_ENV="development"
 export HSTR_CONFIG=hicolor,case-sensitive
 export HSTR_CONFIG=keywords-matching,hicolor,debug
 
-export STARSHIP_CONFIG="$HOME/.config//starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export K9S_CONFIG_DIR="$HOME/.config/k9s"

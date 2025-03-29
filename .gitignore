@@ -34,3 +34,6 @@ Temporary Items
 ### Tmux Plugins ###
 tmux/.config/tmux/plugins
 .aider*
+
+## k9s cluster configurations
+k9s/.config/k9s/clusters
