@@ -3,7 +3,7 @@ success_symbol = '[➜](bold green)'
 error_symbol = '[✗](bold red)'
 
 [aws]
-symbol = " "
+disabled = true
 
 [buf]
 symbol = " "
