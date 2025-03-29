@@ -44,38 +44,8 @@ zstyle ':completion:*' accept-exact '*(N)' # Speedup path completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh
 
-# PROMPT
-SPACESHIP_CHAR_SYMBOL='➔'
-SPACESHIP_CHAR_SUFFIX=' '
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_PROMPT_SEPARATE_LINE=true
-SPACESHIP_DIR_PREFIX=false
-SPACESHIP_TIME_SHOW=true
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  host          # Hostname section
-  dir           # Current directory section
-  aws           # Amazon Web Services section
-  git           # Git section (git_branch + git_status)
-  node          # Node.js section
-  golang        # Go section
-  rust          # Rust section
-  lua           # LuaJIT section
-  package       # npm
-  docker        # Docker section
-  time          # Time stamps section
-  exec_time     # Execution time
-  line_sep      # Line break
-  char          # Prompt character
-)
-
 # paths
 source $ZSH_CUSTOM/path.zsh
-
-# Clone antidote if necessary.
-[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
@@ -100,6 +70,9 @@ function mkdcd() {
 
 # initialize zoxide
 eval "$(zoxide init zsh)"
+
+# initialize starship
+eval "$(starship init zsh)"
 
 # FZF
 eval "$(fzf --zsh)"

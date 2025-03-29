@@ -40,7 +40,7 @@ brew "hstr" # Improved command history
 brew "httpie" # cURL with colors
 brew "shellcheck" # Shell script analysis tool
 brew "tflint" # Terraform linter
-brew "antibody" # Zsh plugin manager
+brew "antidote" # Zsh plugin manager
 brew "eza" # modern ls replacement
 brew "ripgrep" # grep replacement
 brew "1password-cli" # 1Password CLI
@@ -77,6 +77,7 @@ cask "keycastr" # KeyCastr
 cask "redisinsight" # RedisInsight
 cask "nikitabobko/tap/aerospace" # i3-like window manager
 brew "borders" # Add colored borders to user windows
+brew "starship" # shell prompt
 
 # Fonts
 cask "font-hack-nerd-font"

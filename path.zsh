@@ -38,3 +38,5 @@ export NODE_ENV="development"
 # set up hh colours
 export HSTR_CONFIG=hicolor,case-sensitive
 export HSTR_CONFIG=keywords-matching,hicolor,debug
+
+export STARSHIP_CONFIG="$HOME/.config//starship/starship.toml"

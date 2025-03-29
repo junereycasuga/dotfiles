@@ -40,6 +40,7 @@ stow nvim
 # stow yabai
 stow aerospace
 stow asdf
+stow starship
 
 # Add ASDF plugins
 echo "Installing Go asdf plugin"
