@@ -6,6 +6,11 @@ return {
     -- Editor enhancements
     { "tpope/vim-sleuth" },
     { "nvim-lua/plenary.nvim" },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
     -- Telescope fuzzy finder
     {
@@ -129,4 +134,14 @@ return {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+
+    -- Alpha (greeter)
+    {
+        "goolord/alpha-nvim",
+        -- dependencies = { 'echasnovski/mini.icons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        end,
+    }
 }
