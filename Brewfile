@@ -54,6 +54,7 @@ brew "btop" # Better top
 brew "k9s" # Kubernetes CLI
 brew "bat" # Better cat
 brew "fd" # FD
+brew "atuin" # Atuin
 
 # AWS
 brew "awscli" # AWS CLI
