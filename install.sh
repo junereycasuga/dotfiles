@@ -33,6 +33,7 @@ rm -rf "$HOME/.zshrc"
 stow zsh
 
 # Symlink other dirs/files using GNU Stow
+stow git
 stow ghostty
 stow tmux
 stow nvim
