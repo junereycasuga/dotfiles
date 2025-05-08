@@ -77,6 +77,7 @@ cask "ghostty" # Ghostty
 cask "keycastr" # KeyCastr
 cask "redisinsight" # RedisInsight
 cask "nikitabobko/tap/aerospace" # i3-like window manager
+cask "numi" # Better calculator
 brew "borders" # Add colored borders to user windows
 brew "starship" # shell prompt
 
