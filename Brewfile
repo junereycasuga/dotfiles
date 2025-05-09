@@ -55,6 +55,7 @@ brew "k9s" # Kubernetes CLI
 brew "bat" # Better cat
 brew "fd" # FD
 brew "atuin" # Atuin
+brew "carapace" # shell completion
 
 # AWS
 brew "awscli" # AWS CLI
