@@ -90,3 +90,6 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/junereycasuga/.lmstudio/bin"
 eval "$(atuin init zsh)"
+
+export AIDER_EDITOR=nvim
+export RAINFROG_CONFIG=~/.config/rainfrog

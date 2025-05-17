@@ -38,5 +38,3 @@ tmux/.config/tmux/plugins
 ## k9s cluster configurations
 k9s/.config/k9s/clusters
 
-## harlequin config
-harlequin/

@@ -56,6 +56,7 @@ brew "bat" # Better cat
 brew "fd" # FD
 brew "atuin" # Atuin
 brew "carapace" # shell completion
+brew "rainfrog" # Database Client TUI
 
 # AWS
 brew "awscli" # AWS CLI
