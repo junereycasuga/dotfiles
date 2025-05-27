@@ -158,4 +158,7 @@ return {
 			global_keymaps = false,
 		},
 	},
+	{
+		"folke/zen-mode.nvim",
+	},
 }
