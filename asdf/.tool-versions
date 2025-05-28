@@ -1,6 +1,6 @@
 terraform 1.11.3
 golang 1.22.0
-nodejs 23.10.0
+nodejs 20.9.0
 rust 1.85.1
 gleam 1.0.0
 just 1.35.0
