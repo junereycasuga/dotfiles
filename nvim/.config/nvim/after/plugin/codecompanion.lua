@@ -4,7 +4,7 @@ require("codecompanion").setup({
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
           url = "https://openrouter.ai/api",
-          api_key = "echo $OPENROUTER_API_KEY",
+          api_key = "cmd:echo $OPENROUTER_API_KEY",
           chat_url = "/v1/chat/completions",
         },
         schema = {
