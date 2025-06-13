@@ -93,3 +93,8 @@ eval "$(atuin init zsh)"
 
 export AIDER_EDITOR=nvim
 export RAINFROG_CONFIG=~/.config/rainfrog
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/junerey/.lmstudio/bin"
+# End of LM Studio CLI section
+

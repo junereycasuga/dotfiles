@@ -4,7 +4,7 @@ require("codecompanion").setup({
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
           url = "https://openrouter.ai/api",
-          api_key = "cmd:op read op://Personal/CodeCompanion-OpenRouter/credential --no-newline",
+          api_key = "echo $OPENROUTER_API_KEY",
           chat_url = "/v1/chat/completions",
         },
         schema = {
@@ -13,18 +13,38 @@ require("codecompanion").setup({
           },
         },
       })
+    end,
+    lm_studio = function()
+      return require("codecompanion.adapters").extend("openai_compatible", {
+        env = {
+          url = "http://localhost:1234",
+        },
+        schema = {
+          model = {
+            default = "deepseek/deepseek-r1-0528-qwen3-8b"
+          }
+        }
+      })
+    end,
+    ollama = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        schema = {
+          model = {
+            default = "deepseek-coder-v2:16b"
+          } 
+        }
+      })
     end
   },
   strategies = {
     chat = {
-      adapter = "openrouter_claude",
+      adapter = "ollama",
     },
     inline = {
-      adapter = "openrouter_claude",
+      adapter = "ollama",
     },
-    -- Add file strategy (generates content for entire files)
     file = {
-      adapter = "openrouter_claude",
+      adapter = "ollama",
     },
   },
   display = {
@@ -35,15 +55,6 @@ require("codecompanion").setup({
         width = 50,
       }
     }
-  },
-  -- Optional: Configure keymaps
-  keymaps = {
-    -- Inline completion toggle
-    toggle_inline = "<leader>i",
-    -- Open chat
-    open_chat = "<leader>ac",
-    -- Close chat
-    close_chat = "<leader>cq",
   },
   -- Optional: Configure context collection
   context = {
