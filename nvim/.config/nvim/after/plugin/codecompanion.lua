@@ -1,6 +1,6 @@
 require("codecompanion").setup({
   adapters = {
-    openrouter_claude = function()
+    openrouter = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
           url = "https://openrouter.ai/api",
