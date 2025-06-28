@@ -1,10 +1,10 @@
 require("codecompanion").setup({
   adapters = {
-    openrouter = function()
+    openrouter_claude = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
+          api_key = "OPENROUTER_API_KEY",
           url = "https://openrouter.ai/api",
-          api_key = "cmd:echo $OPENROUTER_API_KEY",
           chat_url = "/v1/chat/completions",
         },
         schema = {
@@ -38,13 +38,13 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "ollama",
+      adapter = "openrouter_claude",
     },
     inline = {
-      adapter = "ollama",
+      adapter = "openrouter_claude",
     },
     file = {
-      adapter = "ollama",
+      adapter = "openrouter_claude",
     },
   },
   display = {
