@@ -26,3 +26,4 @@ vim.keymap.set("n", "<leader>f", function()
 end)
 
 vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set({"n", "v"}, "<leader>cca", ":CodeCompanionAction<CR>", { noremap = true, silent = true })

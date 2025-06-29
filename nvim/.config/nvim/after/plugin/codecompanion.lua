@@ -1,6 +1,6 @@
 require("codecompanion").setup({
   adapters = {
-    openrouter_claude = function()
+    openrouter = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
           api_key = "OPENROUTER_API_KEY",
@@ -10,8 +10,42 @@ require("codecompanion").setup({
         schema = {
           model = {
             default = "anthropic/claude-3.7-sonnet",
+            choices = {
+              "google/gemini-2.0-pro",
+              "openai/gpt-40"
+            }
           },
         },
+      })
+    end,
+    openrouter_chat = function()
+      return require("codecompanion.adapters").extend("openrouter", {
+        schema = {
+          model = {
+            default = "google/gemini-2.5-pro",
+          }
+        }
+      })
+    end,
+    openrouter_inline = function()
+      return require("codecompanion.adapters").extend("openrouter", {
+        schema = {
+          model = {
+            default = "openai/gpt-4.1"
+          },
+          temperature = {
+            default = 0.2
+          }
+        }
+      })
+    end,
+    openrouter_file = function()
+      return require("codecompanion.adapters").extend("openrouter", {
+        schema = {
+          model = {
+            default = "anthropic/claude-3.7-sonnet"
+          }
+        }
       })
     end,
     lm_studio = function()
@@ -38,13 +72,19 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "openrouter_claude",
+      adapter = "openrouter_chat",
     },
     inline = {
-      adapter = "openrouter_claude",
+      adapter = "openrouter_inline",
     },
     file = {
-      adapter = "openrouter_claude",
+      adapter = "openrouter_file",
+    },
+  },
+  keymaps = {
+    chat = {
+      change_adapter = "ga",
+      submit = "<CR>"
     },
   },
   display = {
