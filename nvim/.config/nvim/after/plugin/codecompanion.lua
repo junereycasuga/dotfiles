@@ -1,4 +1,25 @@
 require("codecompanion").setup({
+  extensions = {
+    history = {
+      enabled = true,
+      opts = {
+        keymap = "gh",
+        save_chat_keymap = "sc",
+        auto_save = false,
+        auto_generate_title = true,
+        continue_last_chat = false,
+        delete_on_clearing_chat = false,
+        picker = "snacks",
+        enable_logging = false,
+        dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+      }
+    },
+    vectorcode = {
+      opts = {
+        add_tool = true,
+      }
+    }
+  },
   adapters = {
     openrouter = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
@@ -92,7 +113,7 @@ require("codecompanion").setup({
       window = {
         position = "right",
         -- Optional: width of the chat window
-        width = 50,
+        width = 75,
       }
     }
   },
@@ -102,6 +123,10 @@ require("codecompanion").setup({
     enable_workspace = true,
     -- Max number of files to include from workspace
     max_workspace_files = 5,
-  }
+  },
+  init = function()
+    vim.cmd([[cab cc CodeCompanion]])
+    require("spinner"):init()
+  end,
 })
 
