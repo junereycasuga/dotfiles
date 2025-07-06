@@ -172,8 +172,16 @@ return {
 		"olimorris/codecompanion.nvim",
 		opts = {},
 		dependencies = {
+			"j-hui/fidget.nvim", -- Display status
+			"ravitemer/codecompanion-history.nvim", -- Save and load conversation history
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			{
+				"Davidyz/VectorCode", -- Index and search code in your repositories
+				version = "*",
+				build = "pipx upgrade vectorcode",
+				dependencies = { "nvim-lua/plenary.nvim" },
+			},
 		},
 	}
 }

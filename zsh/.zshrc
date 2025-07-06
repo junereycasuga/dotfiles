@@ -1,7 +1,8 @@
 # Path to your dotfiles installation.
 export DOTFILES=$HOME/.dotfiles
 
-# Set nvim as default editor for kubernetes
+# Set nvim as default editor
+export EDITOR=nvim
 export KUBE_EDITOR=nvim
 
 # Uncomment the following line if you want to change the command execution time
