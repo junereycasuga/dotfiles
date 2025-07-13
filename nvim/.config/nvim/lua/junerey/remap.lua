@@ -5,10 +5,10 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (cenetered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (cenetered)" })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -25,5 +25,16 @@ vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
 end)
 
+-- splitting and resizing
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "-", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "_", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "+", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "=", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- indent
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+
 vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "<leader>cca", ":CodeCompanionAction<CR>", { noremap = true, silent = true })
