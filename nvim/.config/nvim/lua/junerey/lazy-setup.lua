@@ -22,7 +22,6 @@ require("lazy").setup("junerey.lazy-plugins", {
         "gzip",
         "matchit",
         "matchparen",
-        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
