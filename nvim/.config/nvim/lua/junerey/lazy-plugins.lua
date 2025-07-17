@@ -54,7 +54,7 @@ return {
 					},
 					vimgrep_arguments = vimgrep_arguments,
 				},
-				pikcers = {
+				pickers = {
 					find_files = {
 						find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 					},
