@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -29,10 +29,10 @@ end)
 -- splitting and resizing
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
-vim.keymap.set("n", "-", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "_", ":resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "+", ":resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "=", ":vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", ">", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- indent
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
