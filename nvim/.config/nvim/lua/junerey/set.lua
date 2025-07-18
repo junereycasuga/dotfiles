@@ -15,7 +15,7 @@ vim.o.swapfile = false
 vim.o.backup = false
 
 -- searching
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 
 -- set numbering
