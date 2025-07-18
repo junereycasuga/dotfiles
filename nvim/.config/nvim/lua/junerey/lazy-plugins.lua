@@ -102,7 +102,11 @@ return {
 				},
 				win_options = {
 					wrap = true
-				}
+				},
+				keymaps = {
+					["<C-r>"] = "actions.refresh",
+					["<C-l>"] = false, -- disable default refresh binding
+				},
 			})
 		end,
 	},
