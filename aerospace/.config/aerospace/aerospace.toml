@@ -154,10 +154,9 @@ alt-shift-semicolon = 'mode service'
 
 # Open applications
 alt-g = ['exec-and-forget open -a "Ghostty"']
-alt-b = ['exec-and-forget open -a "Brave Browser"']
+alt-b = ['exec-and-forget open -a "Zen"']
 alt-s = ['exec-and-forget open -a "Spark Desktop"']
 alt-c = ['exec-and-forget open -a "Calendar"']
-alt-z = ['exec-and-forget open -a "Zen Browser"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
 
 # 'service' binding mode declaration.
