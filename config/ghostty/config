@@ -1,0 +1,27 @@
+# Colors
+theme = catppuccin-frappe
+background = #07070a
+background-opacity = 0.8
+background-blur-radius = 30
+cursor-invert-fg-bg = true
+
+# Fonts
+font-size = 16
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+mouse-hide-while-typing = true
+
+# macOS
+macos-titlebar-style = tabs
+
+# Keybindings
+keybind = cmd+shift+t=toggle_quick_terminal
+
+link-url = true

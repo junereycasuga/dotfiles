@@ -1,0 +1,8 @@
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/command-not-found
+robbyrussell/oh-my-zsh path:plugins/common-aliases
+jeffreytse/zsh-vi-mode
