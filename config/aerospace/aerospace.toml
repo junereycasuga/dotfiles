@@ -121,8 +121,6 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
-alt-m = 'workspace M'
-alt-p = 'workspace P'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -131,8 +129,6 @@ alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
 alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
 alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
 alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-m = ['move-node-to-workspace M', 'workspace M']
-alt-shift-p = ['move-node-to-workspace P', 'workspace P']
 
 alt-shift-f = 'fullscreen'
 
@@ -158,6 +154,7 @@ alt-b = ['exec-and-forget open -a "Zen"']
 alt-s = ['exec-and-forget open -a "Spark Desktop"']
 alt-c = ['exec-and-forget open -a "Calendar"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
+alt-m = ['exec-and-forget open -a "Spotify"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -188,6 +185,10 @@ if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
+if.app-id = "app.zen-browser.zen"
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
 run = "move-node-to-workspace 3"
 
@@ -197,7 +198,7 @@ run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = "com.spotify.client"
-run = "move-node-to-workspace M"
+run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-id = "com.flexibits.fantastical2.mac"
