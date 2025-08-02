@@ -10,9 +10,7 @@
   tool = nvimdiff
 
 [mergetool "nvimdiff"]
-  cmd = nvim -d $REMOTE $LOCAL $BASE $MERGED -c 'wincmd J' -c 'Gvdiffsplit!' -c 'wincmd w'
-; [mergetool "vscode"]
-;   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  cmd = nvim -f -c 'Gvdiffsplit!' $MERGED
 
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
