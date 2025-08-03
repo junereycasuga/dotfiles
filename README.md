@@ -2,6 +2,8 @@
 
 A comprehensive macOS dotfiles setup featuring modern development tools and configurations managed with GNU Stow and Homebrew.
 
+![Screenshot](media/screenshot.png)
+
 ## What's Included
 
 ### Core Development Tools
