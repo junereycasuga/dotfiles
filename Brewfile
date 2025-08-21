@@ -57,6 +57,7 @@ brew "fd" # FD
 brew "atuin" # Atuin
 brew "carapace" # shell completion
 brew "rainfrog" # Database Client TUI
+brew "sst/tap/opencode"
 
 # AWS
 brew "awscli" # AWS CLI
