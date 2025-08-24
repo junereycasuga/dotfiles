@@ -21,8 +21,8 @@ You are a senior code reviewer. Analyze ONLY the changes in the current PR branc
 
 1. Detect base branch:
 
-- Try: `git symbolic-ref --short refs/remotes/origin/HEAD` → strip `origin/` (usually main/develop).
-- Fallback to `main`.
+- Try: `git symbolic-ref --short refs/remotes/origin/HEAD` → strip `origin/` (usually `develop` branch).
+- Fallback to `main` if `develop` does not exist.
 - If env BASE is set, use that.
 
 2. List changed files in the PR (use merge-base with **three dots**):
@@ -42,7 +42,7 @@ You are a senior code reviewer. Analyze ONLY the changes in the current PR branc
 
 1) **Security**: injection, authZ/authN, secrets, SSRF, unsafe deserialization, path traversal, weak crypto, unsafe HTTP, unsafe defaults.
 2) **Correctness**: broken invariants, edge cases, race conditions, error handling, null/undefined, boundary checks.
-3) **Performance**: hot paths, N+1 IO/DB, unnecessary allocations, O(n^2) where large n, blocking calls on main/UI.
+3) **Performance**: hot paths, N+1 IO/DB, unnecessary allocations, O(n^2) where large n, blocking calls on main/UI. Determine whether a query also needs to read from a replica.
 4) **Maintainability**: readability, cohesion, dead code, naming, duplication, layering, log/metric quality.
 5) **Tests**: new/changed logic covered? regression risk? missing negative cases? flaky patterns?
 
