@@ -28,5 +28,5 @@ keybind = cmd+shift+t=toggle_quick_terminal
 link-url = true
 
 # Window
-window-padding-x = 2
+window-padding-x = 10
 
