@@ -99,5 +99,4 @@ export RAINFROG_CONFIG=~/.config/rainfrog
 export PATH="$PATH:/Users/junerey/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

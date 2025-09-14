@@ -58,6 +58,8 @@ brew "atuin" # Atuin
 brew "carapace" # shell completion
 brew "rainfrog" # Database Client TUI
 brew "sst/tap/opencode"
+brew "sesh"
+brew "gum"
 
 # AWS
 brew "awscli" # AWS CLI
