@@ -58,3 +58,18 @@ vim.keymap.set("n", "<leader>vh", function()
   require("telescope.builtin").help_tags()
 end, { desc = "Telescope help tags" })
 
+-- Git Merge
+-- Shortcuts for Git merge conflicts
+-- Press <leader>dl to get changes from the local branch (ours).
+vim.keymap.set('n', '<leader>dl', ':diffget //2<CR>', {
+  noremap = true,
+  silent = true,
+  desc = '[D]iff [G]et [L]ocal (ours)'
+})
+
+-- Press <leader>dr to get changes from the remote branch (theirs).
+vim.keymap.set('n', '<leader>dr', ':diffget //3<CR>', {
+  noremap = true,
+  silent = true,
+  desc = '[D]iff [G]et [R]emote (theirs)'
+})
