@@ -1,5 +1,5 @@
 # Colors
-theme = catppuccin-frappe
+theme = "Catppuccin Frappe"
 background = #07070a
 background-opacity = 0.8
 background-blur-radius = 30
