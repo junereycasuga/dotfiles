@@ -6,6 +6,7 @@ background-blur-radius = 30
 cursor-invert-fg-bg = true
 
 # Fonts
+font-family = "JetBrains Mono"
 font-size = 16
 font-feature = -liga
 font-feature = -calt
