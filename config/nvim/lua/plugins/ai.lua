@@ -8,12 +8,6 @@ return {
 			"ravitemer/codecompanion-history.nvim", -- Save and load conversation history
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			{
-				"Davidyz/VectorCode", -- Index and search code in your repositories
-				version = "*",
-				build = "pipx upgrade vectorcode",
-				dependencies = { "nvim-lua/plenary.nvim" },
-			},
 		},
 		config = function()
 			require("codecompanion").setup({
@@ -30,11 +24,6 @@ return {
 							picker = "snacks",
 							enable_logging = false,
 							dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
-						}
-					},
-					vectorcode = {
-						opts = {
-							add_tool = true,
 						}
 					},
 					mcphub = {
