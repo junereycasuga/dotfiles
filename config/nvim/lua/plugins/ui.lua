@@ -40,7 +40,10 @@ return {
 					-- miscs = {}, -- Uncomment to turn off hard-coded styles
 				},
 				color_overrides = {},
-				custom_highlights = {},
+				custom_highlights = {
+					NormalFloat = { bg = "none" },
+					TelescopeBorder = { bg = "none" },
+				},
 				default_integrations = true,
 				integrations = {
 					cmp = true,
@@ -52,13 +55,16 @@ return {
 						enabled = true,
 						indentscope_color = "",
 					},
+					telescope = {
+						enabled = true,
+					},
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
 
 			-- setup must be called before loading
 			vim.cmd.colorscheme("catppuccin")
-		end
+		end,
 	},
 
 	-- Status line
@@ -72,7 +78,7 @@ return {
 					component_separators = "",
 				},
 			})
-		end
+		end,
 	},
 
 	-- Zen mode
