@@ -38,7 +38,7 @@ alias v="nvim"
 # Terraform
 alias t='terraform'
 
-alias db='gobang'
+alias db='rainfrog'
 
 aero_windows() {
   aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
