@@ -56,10 +56,9 @@ You are a senior code reviewer. Analyze ONLY the changes in the current PR branc
 ## Changed Files
 
 - Files changed: <n>, Additions: <+>, Deletions: <->
-| Status | File | + | - |
-|---|---|---:|---:|
-| M | path/to/file.ts | 42 | 7 |
-| A | new/file.go      | 120 | 0 |
+
+Then a table with the following columns - Status, File, +, -
+Status can be M for modified, A for added, D for deleted
 (only include files in this PR’s diff)
 
 ## Checklist
