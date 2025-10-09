@@ -33,6 +33,7 @@ brew "tmux" # Terminal multiplexer
 brew "neovim" # Vim-fork focused on extensibility and usability
 brew "watchman" # File watching service
 brew "jq" # JSON parser
+brew "yq" # YAML parser
 brew "cmake" # Cross-platform make
 brew "diff-so-fancy" # Better git diff
 brew "wxwidgets" # C++ library for GUI
