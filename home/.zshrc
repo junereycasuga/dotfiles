@@ -58,6 +58,7 @@ autoload -U +X bashcompinit && bashcompinit
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+source ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
