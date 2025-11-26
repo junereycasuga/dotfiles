@@ -87,7 +87,7 @@ cask "nikitabobko/tap/aerospace" # i3-like window manager
 cask "numi" # Better calculator
 brew "borders" # Add colored borders to user windows
 brew "starship" # shell prompt
-brew "pearcleaner"" # Clean up your system
+brew "pearcleaner" # Clean up your system
 
 # Fonts
 cask "font-hack-nerd-font"
