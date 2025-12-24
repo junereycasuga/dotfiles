@@ -61,20 +61,16 @@ return {
 					return "<Tab>"
 				end
 			end, { expr = true, silent = true })
-			
 			-- Press <S-Tab> to jump backward in snippet
 			vim.keymap.set("i", "<S-Tab>", function()
 				ls.jump(-1)
 			end, { silent = true })
-			
 			vim.keymap.set("s", "<Tab>", function()
 				ls.jump(1)
 			end, { silent = true })
-			
 			vim.keymap.set("s", "<S-Tab>", function()
 				ls.jump(-1)
 			end, { silent = true })
-			
 			-- For changing choices in choiceNodes
 			vim.keymap.set("i", "<C-E>", function()
 				if ls.choice_active() then
@@ -83,7 +79,6 @@ return {
 					return "<C-E>"
 				end
 			end, { expr = true, silent = true })
-			
 			vim.keymap.set("s", "<C-E>", function()
 				if ls.choice_active() then
 					return "<Plug>luasnip-next-choice"
@@ -102,7 +97,7 @@ return {
 			local telescopeConfig = require("telescope.config")
 			local actions = require("telescope.actions")
 
-			local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+			local vimgrep_arguments = { table.unpack(telescopeConfig.values.vimgrep_arguments) }
 
 			table.insert(vimgrep_arguments, "--hidden")
 			table.insert(vimgrep_arguments, "--glob")
@@ -214,9 +209,9 @@ return {
 
 	-- Indentation
 	{
-		"lukas-reineke/indent-blankline.nvim", 
-		config = function() 
-			require("ibl").setup() 
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup()
 		end
 	},
 }
