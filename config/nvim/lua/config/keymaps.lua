@@ -41,9 +41,6 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 vim.keymap.set("i", "jj", "<Esc>", { noremap = false })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = false })
 
--- CodeCompanion
-vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>", { noremap = true, silent = true })
-
 -- Telescope
 vim.keymap.set("n", "<leader>ff", function()
   require("telescope.builtin").find_files()
@@ -73,3 +70,6 @@ vim.keymap.set('n', '<leader>dr', ':diffget //3<CR>', {
   silent = true,
   desc = '[D]iff [G]et [R]emote (theirs)'
 })
+
+-- CodeCompanion
+vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>", { noremap = true, silent = true })
