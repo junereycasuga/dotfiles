@@ -50,11 +50,11 @@ return {
 		build = "make install_jsregexp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
-		local ls = require("luasnip")
-		require("luasnip.loaders.from_vscode").lazy_load()
+			local ls = require("luasnip")
+			require("luasnip.loaders.from_vscode").lazy_load()
 
-		-- Press <Tab> to expand or jump to the next snippet placeholder
-		vim.keymap.set({ "i", "s" }, "<Tab>", function()
+			-- Press <Tab> to expand or jump to the next snippet placeholder
+			vim.keymap.set({ "i", "s" }, "<Tab>", function()
 				if ls.expand_or_jumpable() then
 					return "<Plug>luasnip-expand-or-jump"
 				else
@@ -97,7 +97,7 @@ return {
 			local telescopeConfig = require("telescope.config")
 			local actions = require("telescope.actions")
 
-			local vimgrep_arguments = { table.unpack(telescopeConfig.values.vimgrep_arguments) }
+			local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
 
 			table.insert(vimgrep_arguments, "--hidden")
 			table.insert(vimgrep_arguments, "--glob")
