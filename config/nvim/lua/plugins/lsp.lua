@@ -67,14 +67,11 @@ return {
 					"eslint",
 					"bashls",
 					"yamlls",
-					"templ",
-					"tailwindcss",
-					"svelte",
 					"sqlls",
 					"rust_analyzer",
 					"html",
-					"htmx",
 					"jsonls",
+					"lua_ls",
 				},
 				handlers = {
 					function(server_name)
