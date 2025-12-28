@@ -65,7 +65,3 @@ vim.keymap.set('n', '<leader>dr', ':diffget //3<CR>', {
 	silent = true,
 	desc = '[D]iff [G]et [R]emote (theirs)'
 })
-
--- CodeCompanion
-vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>",
-	{ noremap = true, silent = true, desc = "Toggle CodeCompanion chat" })
