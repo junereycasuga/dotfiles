@@ -207,11 +207,56 @@ return {
 	-- Auto pairs
 	{ "jiangmiao/auto-pairs" },
 
-	-- Indentation
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("ibl").setup()
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			dim = { enabled = true },
+			indent = { enabled = true },
+			input = { enabled = true },
+			notifier = { enabled = true },
+			picker = { enabled = true },
+			quickfile = { enabled = true },
+			scope = { enabled = true },
+			scratch = { enabled = true },
+			statuscolumn = { enabled = true },
+			words = { enabled = true },
+			zen = { enabled = true }
+		},
+		keys = {
+			{ "<leader>z",  function() Snacks.zen() end,                desc = "Toggle Zen Mode" },
+			{ "<leader>un", function() Snacks.notifier.hide() end,      desc = "Hide Notifier" },
+			{ "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename file" },
+			{ "<leader>gB", function() Snacks.gitbrowse() end,          desc = "Git browse",           mode = { "n", "v" } },
+			{ "<leader>gg", function() Snacks.lazygit() end,            desc = "Lazygit" },
+			{ "<leader>.",  function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
+		},
+		init = function()
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VeryLazy",
+				callback = function()
+					Snacks.toggle.dim():map("<leader>uD")
+				end
+			})
 		end
 	},
+
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			preset = "helix",
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)"
+			}
+		}
+	}
 }
