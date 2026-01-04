@@ -3,5 +3,24 @@
   // Theme configuration
   "theme": "system",
   "model": "claude-sonnet-4-5",
-  "autoupdate": true
+  "autoupdate": true,
+  // MCP configuration
+  // Run `opencode mcp auth {mcp-name}` to authenticate
+  "mcp": {
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/sse",
+      "enabled": true,
+    },
+    "atlassian": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/sse",
+      "enabled": true,
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "enabled": true,
+    }
+  }
 }
