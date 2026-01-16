@@ -106,11 +106,11 @@ If the user says "whatever you think is best", provide your recommendatoin and g
 
 ## Phase 6: Quality Review
 
-**Goal:** Ensure code is simple, DRY, elegant, easy to read, and functionally correct
+**Goal:** Ensure code is simple, DRY, elegant, easy to read, and most importantly functionally correct and has security vulnerabilities mitigated
 
 **Actions:**
 
-1. Launch 2-3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions
+1. Launch 2-3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions, security
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
