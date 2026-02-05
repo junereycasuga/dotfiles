@@ -22,5 +22,8 @@
       "url": "https://mcp.sentry.dev/mcp",
       "enabled": true,
     }
-  }
+  },
+  "plugin": [
+    "opencode-anthropic-auth@latest"
+  ]
 }

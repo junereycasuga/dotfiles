@@ -28,3 +28,5 @@ keybind = cmd+shift+t=toggle_quick_terminal
 # Links
 link-url = true
 
+macos-custom-icon = ~/.config/ghostty/macos.png
+macos-icon = custom
