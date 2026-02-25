@@ -81,16 +81,12 @@ return {
 					source = "cmp"
 				},
 				md_files = {
-					"AGENT.md"
+					"AGENTS.md"
 				}
 			})
 
-			vim.keymap.set("n", "<leader>9f", function()
-				_99.fill_in_function_prompt()
-			end)
-
 			vim.keymap.set("v", "<leader>9v", function()
-				_99.visual_prompt()
+				_99.visual()
 			end)
 
 			vim.keymap.set("v", "<leader>9s", function()

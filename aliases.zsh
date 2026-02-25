@@ -2,7 +2,7 @@
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias reloadcli="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --across'
+alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --icons'
 alias c="clear"
 
 alias ~="cd ~"
