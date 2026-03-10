@@ -40,7 +40,7 @@ return {
 			vim.keymap.set("n", "<C-S-N>", function()
 				harpoon:list():next()
 			end)
-		end
+		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -86,7 +86,7 @@ return {
 					return "<C-E>"
 				end
 			end, { expr = true, silent = true })
-		end
+		end,
 	},
 	-- Telescope fuzzy finder
 	{
@@ -135,44 +135,40 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				-- A list of parser names, or "all" (the five listed parsers should always be installed)
-				ensure_installed = {
-					"c",
-					"lua",
-					"vim",
-					"vimdoc",
-					"query",
-					"javascript",
-					"typescript",
-					"go",
-					"terraform",
-					"markdown",
-					"templ",
-				},
+		opts = {
+			ensure_installed = {
+				"c",
+				"lua",
+				"vim",
+				"vimdoc",
+				"query",
+				"javascript",
+				"typescript",
+				"go",
+				"terraform",
+				"markdown",
+				"templ",
+			},
+			-- Install parsers synchronously (only applied to `ensure_installed`)
+			sync_install = false,
 
-				-- Install parsers synchronously (only applied to `ensure_installed`)
-				sync_install = false,
+			-- Automatically install missing parsers when entering buffer
+			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+			auto_install = true,
 
-				-- Automatically install missing parsers when entering buffer
-				-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-				auto_install = true,
+			---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+			-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-				---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-				-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+			highlight = {
+				enable = true,
 
-				highlight = {
-					enable = true,
-
-					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-					-- Using this option may slow down your editor, and you may see some duplicate highlights.
-					-- Instead of true it can also be a list of languages
-					additional_vim_regex_highlighting = false,
-				},
-			})
-		end
+				-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+				-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+				-- Using this option may slow down your editor, and you may see some duplicate highlights.
+				-- Instead of true it can also be a list of languages
+				additional_vim_regex_highlighting = false,
+			},
+		},
 	},
 
 	-- File explorer
@@ -190,14 +186,14 @@ return {
 					natural_order = true,
 				},
 				win_options = {
-					wrap = true
+					wrap = true,
 				},
 				keymaps = {
 					["<C-r>"] = "actions.refresh",
 					["<C-l>"] = false, -- disable default refresh binding
 				},
 			})
-		end
+		end,
 	},
 
 	-- Code manipulation
@@ -223,24 +219,61 @@ return {
 			scratch = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
-			zen = { enabled = true }
+			zen = { enabled = true },
 		},
 		keys = {
-			{ "<leader>z",  function() Snacks.zen() end,                desc = "Toggle Zen Mode" },
-			{ "<leader>un", function() Snacks.notifier.hide() end,      desc = "Hide Notifier" },
-			{ "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename file" },
-			{ "<leader>gB", function() Snacks.gitbrowse() end,          desc = "Git browse",           mode = { "n", "v" } },
-			{ "<leader>gg", function() Snacks.lazygit() end,            desc = "Lazygit" },
-			{ "<leader>.",  function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
+			{
+				"<leader>z",
+				function()
+					Snacks.zen()
+				end,
+				desc = "Toggle Zen Mode",
+			},
+			{
+				"<leader>un",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Hide Notifier",
+			},
+			{
+				"<leader>cR",
+				function()
+					Snacks.rename.rename_file()
+				end,
+				desc = "Rename file",
+			},
+			{
+				"<leader>gB",
+				function()
+					Snacks.gitbrowse()
+				end,
+				desc = "Git browse",
+				mode = { "n", "v" },
+			},
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
+			{
+				"<leader>.",
+				function()
+					Snacks.scratch()
+				end,
+				desc = "Toggle Scratch Buffer",
+			},
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
 				callback = function()
 					Snacks.toggle.dim():map("<leader>uD")
-				end
+				end,
 			})
-		end
+		end,
 	},
 
 	{
@@ -255,15 +288,15 @@ return {
 				function()
 					require("which-key").show({ global = false })
 				end,
-				desc = "Buffer Local Keymaps (which-key)"
-			}
-		}
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
 			require("treesitter-context").setup({})
-		end
-	}
+		end,
+	},
 }
