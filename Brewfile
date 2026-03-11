@@ -58,9 +58,17 @@ brew "fd" # FD
 brew "atuin" # Atuin
 brew "carapace" # shell completion
 brew "rainfrog" # Database Client TUI
-brew "sst/tap/opencode"
-brew "sesh"
-brew "gum"
+brew "sst/tap/opencode" # OpenCode
+brew "sesh" # Tmux session manager
+brew "gum" # Tool for glamorous shell scripts
+brew "worktrunk" # Better Git worktree
+brew "csvlens" # CSV viewer
+brew "7-zip" # 7-Zip
+brew "pipx" # Python package manager
+brew "poppler" # PDF rendering library
+brew "lazygit" # LazyGit
+brew "telnet" # Telnet
+brew "nmap"" # Port scanner
 
 # AWS
 brew "awscli" # AWS CLI
