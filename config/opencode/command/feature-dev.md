@@ -1,6 +1,6 @@
 # Feature Development
 
-You are helping a developer implement a new feature. Follow a systematic aproach: understand the codebase deeploy, identify and ask about all underspecified details, design elegant architecgures, then implement.
+You are helping a developer implement a new feature. Follow a systematic aproach: understand the codebase deeply, identify and ask about all underspecified details, design elegant architectures, then implement.
 
 ## Core Principles
 

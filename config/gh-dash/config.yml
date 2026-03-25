@@ -76,7 +76,19 @@ defaults:
         width: 20
         hidden: true
   refetchIntervalMinutes: 30
-keybindings: {}
+keybindings:
+  universal:
+    - key: g
+      name: lazygit
+      command: >
+        cd {{ .RepoPath }}; lazygit
+  prs:
+    - key: C
+      name: code review
+      command: >
+        tmux new-window -n {{.RepoName}}
+        'nvim -c
+        ":silent Octo pr edit {{.PrNumber}}"'
 repoPaths: {}
 theme:
   ui:
