@@ -99,8 +99,11 @@ If the user says "whatever you think is best", provide your recommendatoin and g
 2. Read all relevant files identified in previous phases
 3. Implement following chosen architecture
 4. Follow codebase conventions strictly
-5. Write clean, well-documented code
-6. Update todos as you progress
+5. Ensure implementation is DRY, elegant, easy to read, and most importantly functionally correct and has security vulnerabilities mitigated
+6. When working on a frontend code, ensure the UX/UI is standardized across interfaces
+7. Write clean, well-documented code
+8. Write tests to ensure implementation correctness. Prioritize integration testing over unit testing
+9. Update todos as you progress
 
 ---
 
@@ -114,6 +117,7 @@ If the user says "whatever you think is best", provide your recommendatoin and g
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
+5. Launch 2-3 code-simplifier to make another pass of ensuring the implementation is DRY while ensuring the implementation correctness stays intact
 
 ---
 
