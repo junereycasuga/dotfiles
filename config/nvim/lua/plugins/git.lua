@@ -15,6 +15,9 @@ return {
 				},
 				current_line_blame = true,
 			})
-		end
+		end,
+	},
+	{
+		"tpope/vim-fugitive",
 	},
 }
