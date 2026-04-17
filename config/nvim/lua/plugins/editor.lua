@@ -97,7 +97,10 @@ return {
 			local telescopeConfig = require("telescope.config")
 			local actions = require("telescope.actions")
 
-			local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+			local vimgrep_arguments = vim.list_extend(
+				{},
+				telescopeConfig.values.vimgrep_arguments
+			)
 
 			table.insert(vimgrep_arguments, "--hidden")
 			table.insert(vimgrep_arguments, "--glob")
@@ -123,7 +126,13 @@ return {
 				},
 				pickers = {
 					find_files = {
-						find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+						find_command = {
+							"rg",
+							"--files",
+							"--hidden",
+							"--glob",
+							"!**/.git/*"
+						},
 					},
 				},
 			})

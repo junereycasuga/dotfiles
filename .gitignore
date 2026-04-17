@@ -38,3 +38,4 @@ config/tmux/plugins/
 config/k9s/clusters/
 
 .aider*
+tmp/

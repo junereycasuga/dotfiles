@@ -24,3 +24,6 @@ vim.o.relativenumber = true
 
 -- colors
 vim.o.termguicolors = true
+
+-- colorcolumn
+vim.opt.colorcolumn = "80"

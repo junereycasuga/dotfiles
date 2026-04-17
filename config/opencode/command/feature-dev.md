@@ -113,11 +113,11 @@ If the user says "whatever you think is best", provide your recommendatoin and g
 
 **Actions:**
 
-1. Launch 2-3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions, security
-2. Consolidate findings and identify highest severity issues that you recommend fixing
-3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
-4. Address issues based on user decision
-5. Launch 2-3 code-simplifier to make another pass of ensuring the implementation is DRY while ensuring the implementation correctness stays intact
+1. Launch 2-3 code-simplifier agents in parallel to ensure the implementation is DRY while ensuring the implementation correctness stays intact
+2. Launch 2-3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions, security
+3. Consolidate findings and identify highest severity issues that you recommend fixing
+4. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
+5. Address issues based on user decision
 
 ---
 
