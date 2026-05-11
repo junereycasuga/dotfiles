@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "domt4/autoupdate"
 tap "FelixKratz/formulae"
+tap "modem-dev/tap/hunk"
 
 # Binaries
 brew "automake" # Tool for automatically generating Makefiles
@@ -68,7 +69,7 @@ brew "pipx" # Python package manager
 brew "poppler" # PDF rendering library
 brew "lazygit" # LazyGit
 brew "telnet" # Telnet
-brew "nmap"" # Port scanner
+brew "nmap" # Port scanner
 
 # AWS
 brew "awscli" # AWS CLI
