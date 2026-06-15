@@ -155,6 +155,7 @@ alt-s = ['exec-and-forget open -a "Spark Desktop"']
 alt-c = ['exec-and-forget open -a "Calendar"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
 alt-m = ['exec-and-forget open -a "Spotify"']
+alt-n = ['exec-and-forget open -a "ZenNotes"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

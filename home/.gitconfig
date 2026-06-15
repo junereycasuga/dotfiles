@@ -21,8 +21,8 @@
   diffFilter = diff-so-fancy --patch
 
 [user]
-  name = Junerey
-  email = junerey.casuga@gmail.com
+	name = Junerey
+	email = junerey.casuga@gmail.com
 
 [init]
   defaultBranch = main
