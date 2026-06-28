@@ -21,6 +21,7 @@ A comprehensive macOS dotfiles setup featuring modern development tools and conf
 - **asdf**: Version manager for Node.js, Go, Terraform, and Zig
 - **OrbStack**: Docker Desktop alternative
 - **Homebrew**: Package manager with comprehensive tool collection
+- **just**: Command runner for repeatable maintenance tasks
 
 ### Productivity Tools
 - **1Password**: Password manager with CLI integration
@@ -46,11 +47,13 @@ Pre-configured for:
 1. Update macOS to the latest version with the App Store
 2. Install Xcode from the App Store, open it and accept the license agreement
 3. Install macOS Command Line Tools by running `xcode-select --install`
-4. Copy your public and private SSH keys to `~/.ssh` and make sure they're set to `600`
+4. Generate or restore SSH keys in `~/.ssh` and make sure private keys are `600`
 5. Clone this repo to `~/.dotfiles`
-6. Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
-7. Run `install.sh` to start the installation
-8. Restart your computer to finalize the process
+6. Run `./install.sh` to start the installation
+7. Restart your terminal or computer to load the shell changes
+8. Run `just doctor` to verify the setup
+
+If `just` is not available yet, run `./scripts/doctor.sh` directly after installation.
 
 ## Configuration Management
 
@@ -59,6 +62,7 @@ This setup uses **GNU Stow** for symlink management with a two-tier structure:
 ```
 dotfiles/
 ├── home/            # Files symlinked to ~/
+│   ├── .zprofile    # Login-shell environment
 │   └── .zshrc       # Shell configuration
 ├── config/          # Files symlinked to ~/.config/
 │   ├── nvim/        # Neovim configuration
@@ -69,15 +73,19 @@ dotfiles/
 │   ├── k9s/         # Kubernetes CLI
 │   └── rainfrog/    # Database client
 ├── aliases.zsh      # Shell aliases (sourced by .zshrc)
-├── path.zsh         # PATH configuration (sourced by .zshrc)
+├── justfile         # Dotfiles maintenance commands
+├── path.zsh         # PATH configuration
+├── scripts/         # Health checks and automation
 └── install.sh       # Setup script
 ```
 
 The installation script automatically applies both configuration tiers:
 ```bash
-stow -t ~ home       # Apply home directory configs
-stow -t ~/.config config  # Apply XDG config directory configs
+stow --restow -t ~ home
+stow --restow -t ~/.config config
 ```
+
+`.zprofile` owns login-shell environment setup. `.zshrc` owns interactive behavior such as completions, aliases, prompt, shell plugins, and fuzzy finder integration.
 
 ## Aliases & Shortcuts
 
@@ -92,16 +100,51 @@ The configuration includes numerous aliases for productivity:
 ## Maintenance
 
 ```bash
-# Update all packages
-brew bundle
+# List available maintenance commands
+just
+
+# Run the full health check
+just doctor
+
+# Run non-mutating config checks
+just check
+
+# Check missing Brewfile dependencies without requiring upgrades
+just brew-check
+
+# Install missing Brewfile dependencies
+just brew-sync
+
+# Check whether Brewfile packages are outdated
+just brew-outdated
 
 # Reload shell configuration
 reloadcli
 
-# Apply configuration changes (done automatically by install.sh)
-stow -t ~ home           # Apply home directory configs
-stow -t ~/.config config # Apply XDG config directory configs
+# Apply configuration changes
+just restow
 
-# Apply individual tool configs (if needed)
-cd config && stow -t ~/.config <tool-name>
+# Measure shell startup time
+just shell-time
+
+# Profile shell startup functions
+just shell-profile
 ```
+
+`just brew-check` uses `brew bundle check --no-upgrade`, so it reports missing dependencies without failing just because installed packages are outdated. Use `just brew-outdated` when you explicitly want the stricter up-to-date check.
+
+## Health Checks
+
+`just doctor` runs the same checks used during maintenance:
+
+- Required tool availability
+- Zsh syntax for `.zprofile`, `.zshrc`, `aliases.zsh`, and `path.zsh`
+- ShellCheck for shell scripts
+- GNU Stow dry-runs for home and XDG config packages
+- Brewfile dependency check
+- asdf version resolution
+- opencode config validation
+- Neovim headless startup
+- Interactive shell startup timing
+
+Run `just doctor` after macOS upgrades, Homebrew changes, shell plugin changes, or when setting up a new machine.

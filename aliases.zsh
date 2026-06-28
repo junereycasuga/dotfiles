@@ -16,21 +16,34 @@ alias dotfiles="cd $DOTFILES"
 
 # Docker
 alias d='docker'
-alias dstop="docker stop $(docker ps -a -q)"
-alias dpurgecontainers="dstop && docker rm $(docker ps -a -q)"
-alias dpurgeimages="docker rmi $(docker images -q)"
-dbuild() { docker build -t=$1 .; }
-dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
-docker_prune() { docker system prune --volumes -fa }
+dstop() {
+  local containers
+  containers=(${(f)"$(docker ps -a -q)"})
+  (( ${#containers[@]} )) && docker stop "${containers[@]}"
+}
+dpurgecontainers() {
+  local containers
+  containers=(${(f)"$(docker ps -a -q)"})
+  (( ${#containers[@]} )) && docker rm -f "${containers[@]}"
+}
+dpurgeimages() {
+  local images
+  images=(${(f)"$(docker images -q)"})
+  (( ${#images[@]} )) && docker rmi "${images[@]}"
+}
+dbuild() { docker build -t="$1" .; }
+dbash() {
+  local container
+  container="$(docker ps -aqf "name=$1" | head -n 1)"
+  [[ -n "$container" ]] && docker exec -it "$container" bash
+}
+docker_prune() { docker system prune --volumes -fa; }
 
 # Git
 alias git-prune='git branch --merged | egrep -v "(^\*|master|develop)" | xargs git branch -d'
 alias gsm='git smart-merge'
 alias gsp='git smart-pull'
 alias gst='git status'
-
-# TMUX
-alias tmux="tmux"
 
 # Vim
 alias v="nvim"
@@ -47,7 +60,6 @@ alias ff='aero_windows'
 
 # HSTR configuration - add this to ~/.bashrc
 alias hh=hstr                    # hh to be alias for hstr
-export HSTR_CONFIG=hicolor        # get more colors
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)

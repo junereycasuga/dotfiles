@@ -1,9 +1,9 @@
 # Path to your dotfiles installation.
-export DOTFILES=$HOME/.dotfiles
+export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
 
 # Set nvim as default editor
-export EDITOR=nvim
-export KUBE_EDITOR=nvim
+export EDITOR=${EDITOR:-nvim}
+export KUBE_EDITOR=${KUBE_EDITOR:-nvim}
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -13,8 +13,9 @@ HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$DOTFILES
 
 autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null || print 0)
+if [[ $(date +'%j') != $updated_at ]]; then
   compinit -i
 else
   compinit -C -i
@@ -54,16 +55,14 @@ antidote load
 # aliases
 source $ZSH_CUSTOM/aliases.zsh
 
-autoload -U +X bashcompinit && bashcompinit
+if [[ -r ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh ]]; then
+  source ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
+fi
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-source ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
-
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
-complete -o nospace -C /usr/local/bin/terraform terraform
+if command -v terraform >/dev/null 2>&1; then
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C "$(command -v terraform)" terraform
+fi
 
 # Makes a directory and changes to it.
 function mkdcd() {
@@ -71,13 +70,19 @@ function mkdcd() {
 }
 
 # initialize zoxide
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 
 # initialize starship
-eval "$(starship init zsh)"
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
 
 # FZF
-eval "$(fzf --zsh)"
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .ti"
@@ -89,20 +94,19 @@ export FZF_TMUX_OPTS=" -p90%,79% "
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/junereycasuga/.lmstudio/bin"
-eval "$(atuin init zsh)"
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+fi
 
-export AIDER_EDITOR=nvim
-export RAINFROG_CONFIG=~/.config/rainfrog
+export AIDER_EDITOR=${AIDER_EDITOR:-nvim}
+export RAINFROG_CONFIG=${RAINFOG_CONFIG:-$HOME/.config/rainfrog}
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/junerey/.lmstudio/bin"
-# End of LM Studio CLI section
+if [[ "$TERM_PROGRAM" == "kiro" ]] && command -v kiro >/dev/null 2>&1; then
+  kiro_integration="$(kiro --locate-shell-integration-path zsh)"
+  [[ -r "$kiro_integration" ]] && source "$kiro_integration"
+  unset kiro_integration
+fi
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
-
-# Pi
-export PATH="/Users/junerey/.asdf/installs/nodejs/24.15.0/bin:$PATH"
+if command -v wt >/dev/null 2>&1; then
+  eval "$(command wt config shell init zsh)"
+fi

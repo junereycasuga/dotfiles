@@ -4,27 +4,46 @@
 # export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # Local bin directories before anything else
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH"
+typeset -U path PATH
+path=(
+  /opt/homebrew/bin
+  /usr/local/bin
+  /usr/local/sbin
+  $HOME/.asdf/shims
+  $HOME/.asdf/bin
+  $HOME/.yarn/bin
+  $HOME/.config/yarn/global/node_modules/.bin
+  $HOME/.fastlane/bin
+  $HOME/.lmstudio/bin
+  $HOME/.bin
+  $path
+)
 
 # Where to find the zsh history
 export HISTFILE=${HOME}/.zsh_history
-
-# Customize to your needs...
-export PATH=$PATH:~/.bin
 
 # Locales
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
-# For compilers to find zlib you may need to set:
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+if [[ -d /opt/homebrew/opt/zlib ]]; then
+  zlib_prefix=/opt/homebrew/opt/zlib
+elif [[ -d /usr/local/opt/zlib ]]; then
+  zlib_prefix=/usr/local/opt/zlib
+fi
 
-# For pkg-config to find zlib you may need to set:
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+if [[ -n ${zlib_prefix:-} ]]; then
+  zlib_ldflag="-L${zlib_prefix}/lib"
+  zlib_cppflag="-I${zlib_prefix}/include"
+  zlib_pkg_config_path="${zlib_prefix}/lib/pkgconfig"
+
+  [[ " ${LDFLAGS:-} " == *" ${zlib_ldflag} "* ]] || export LDFLAGS="${LDFLAGS:+$LDFLAGS }${zlib_ldflag}"
+  [[ " ${CPPFLAGS:-} " == *" ${zlib_cppflag} "* ]] || export CPPFLAGS="${CPPFLAGS:+$CPPFLAGS }${zlib_cppflag}"
+  [[ ":${PKG_CONFIG_PATH:-}:" == *":${zlib_pkg_config_path}:"* ]] || export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}${zlib_pkg_config_path}"
+
+  unset zlib_ldflag zlib_cppflag zlib_pkg_config_path
+  unset zlib_prefix
+fi
 
 # For erlang installations, removes java dependency
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
@@ -36,8 +55,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export NODE_ENV="development"
 
 # set up hh colours
-export HSTR_CONFIG=hicolor,case-sensitive
-export HSTR_CONFIG=keywords-matching,hicolor,debug
+export HSTR_CONFIG=keywords-matching,hicolor
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"

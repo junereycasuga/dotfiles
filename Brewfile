@@ -1,10 +1,7 @@
 # Taps
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/services"
 tap "domt4/autoupdate"
 tap "FelixKratz/formulae"
-tap "modem-dev/tap/hunk"
+tap "modem-dev/tap"
 
 # Binaries
 brew "automake" # Tool for automatically generating Makefiles
@@ -42,10 +39,11 @@ brew "hstr" # Improved command history
 brew "httpie" # cURL with colors
 brew "shellcheck" # Shell script analysis tool
 brew "tflint" # Terraform linter
+brew "asdf" # Language version manager
 brew "antidote" # Zsh plugin manager
 brew "eza" # modern ls replacement
 brew "ripgrep" # grep replacement
-brew "1password-cli" # 1Password CLI
+cask "1password-cli" # 1Password CLI
 brew "zoxide" # cd replacement
 brew "fzf" # Fuzzy finder
 brew "stow" # Symlink farm manager
@@ -59,7 +57,7 @@ brew "fd" # FD
 brew "atuin" # Atuin
 brew "carapace" # shell completion
 brew "rainfrog" # Database Client TUI
-brew "sst/tap/opencode" # OpenCode
+brew "opencode-ai/tap/opencode" # OpenCode
 brew "sesh" # Tmux session manager
 brew "gum" # Tool for glamorous shell scripts
 brew "worktrunk" # Better Git worktree
@@ -79,7 +77,7 @@ cask "bruno" # API Client
 cask "orbstack" # Docker Desktop alternative
 cask "shortcat" # Keyboard productivity app
 # cask "brave-browser" # Brave Browser
-brew "zen" # Zen browser
+cask "zen" # Zen browser
 cask "readdle-spark" # Spark Email client
 cask "obsidian" # Obsidian
 cask "1password" # 1Password Password manager
@@ -91,12 +89,12 @@ cask "raycast" # Raycast
 # cask "kitty" # Kitty terminal emulator
 cask "ghostty" # Ghostty
 cask "keycastr" # KeyCastr
-cask "redisinsight" # RedisInsight
+cask "redis-insight" # RedisInsight
 cask "nikitabobko/tap/aerospace" # i3-like window manager
 cask "numi" # Better calculator
 brew "borders" # Add colored borders to user windows
 brew "starship" # shell prompt
-brew "pearcleaner" # Clean up your system
+cask "pearcleaner" # Clean up your system
 
 # Fonts
 cask "font-hack-nerd-font"

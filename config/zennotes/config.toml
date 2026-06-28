@@ -65,7 +65,7 @@ quick_note_title_prefix = "Quick Note"  # prefix for new quick-note titles; empt
 auto_calendar_panel = true  # auto-show the calendar for daily / weekly notes
 calendar_week_start = "monday"  # monday | sunday | locale
 calendar_show_week_numbers = true  # show ISO week numbers in the calendar
-tasks_view_mode = "calendar"  # list | calendar | kanban
+tasks_view_mode = "kanban"  # list | calendar | kanban
 kanban_group_by = "priority"  # status | priority | folder
 
 # Keymap overrides. Add or uncomment "<action.id>" = "<binding>" lines.
@@ -175,4 +175,4 @@ kanban_group_by = "priority"  # status | priority | folder
 # Example: "status:todo" = "To Do"
 [kanban_column_titles]
 "status:done" = "Done"
-
+"priority:high" = "High"

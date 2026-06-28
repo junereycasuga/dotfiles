@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # Colors for output
 RED='\033[0;31m'
@@ -10,6 +10,21 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
+
+require_command() {
+    if ! command -v "$1" >/dev/null 2>&1; then
+        echo -e "${RED}❌ Required command not found: $1${NC}"
+        exit 1
+    fi
+}
+
+load_homebrew_shellenv() {
+    if [ -x /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    elif [ -x /usr/local/bin/brew ]; then
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
+}
 
 # Function to display the splash screen
 show_splash() {
@@ -72,13 +87,17 @@ confirm_installation
 
 # Check for Homebrew and install if we don't have it
 echo -e "${BLUE}🍺 Checking for Homebrew...${NC}"
-if test ! "$(which brew)"; then
+if ! command -v brew >/dev/null 2>&1; then
    echo -e "${YELLOW}📦 Installing Homebrew...${NC}"
+   echo -e "${YELLOW}    Homebrew's official installer will be downloaded over HTTPS and executed.${NC}"
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   load_homebrew_shellenv
    echo -e "${GREEN}✅ Homebrew installed successfully${NC}"
 else
    echo -e "${GREEN}✅ Homebrew already installed${NC}"
 fi
+
+require_command brew
 
 # Update Homebrew recipes
 echo -e "${BLUE}🔄 Updating Homebrew...${NC}"
@@ -103,29 +122,37 @@ if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
   cp "$HOME/.zshrc" "$HOME/.zshrc.backup"
 fi
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf "$HOME/.zshrc"
+# Remove the old .zshrc only when it is a file or symlink. Do not recurse into directories.
+if [ -L "$HOME/.zshrc" ] || [ -f "$HOME/.zshrc" ]; then
+  rm "$HOME/.zshrc"
+elif [ -e "$HOME/.zshrc" ]; then
+  echo -e "${RED}❌ $HOME/.zshrc exists and is not a file or symlink. Move it before continuing.${NC}"
+  exit 1
+fi
 
 # Symlink other dirs/files using GNU Stow
 echo -e "${BLUE}🔗 Creating configuration symlinks...${NC}"
-stow -t ~ home
-stow -t ~/.config config
+require_command stow
+mkdir -p "$HOME/.config"
+stow --restow -t ~ home
+stow --restow -t ~/.config config
 echo -e "${GREEN}✅ Configuration files symlinked${NC}"
 
 # Add ASDF plugins
 echo -e "${BLUE}🌐 Installing asdf language plugins...${NC}"
+require_command asdf
 
 echo -e "${YELLOW}  📦 Installing Go asdf plugin...${NC}"
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Go plugin already installed${NC}"
 
 echo -e "${YELLOW}  📦 Installing Zig asdf plugin...${NC}"
-asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Zig plugin already installed${NC}"
+asdf plugin add zig https://github.com/asdf-community/asdf-zig.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Zig plugin already installed${NC}"
 
 echo -e "${YELLOW}  📦 Installing Terraform asdf plugin...${NC}"
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Terraform plugin already installed${NC}"
+asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Terraform plugin already installed${NC}"
 
 echo -e "${YELLOW}  📦 Installing Node.js asdf plugin...${NC}"
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Node.js plugin already installed${NC}"
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Node.js plugin already installed${NC}"
 
 echo -e "${GREEN}✅ Language plugins configured${NC}"
 
