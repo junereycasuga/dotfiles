@@ -15,7 +15,7 @@ config_version = 1
 [vim]
 enabled = true  # true | false — CodeMirror Vim bindings
 insert_escape = "jk"  # key sequence to leave insert mode, e.g. "jk"; empty disables
-yank_to_clipboard = true  # also copy Vim yank/delete/change to the system clipboard
+yank_to_clipboard = true  # sync the system clipboard with Vim yank/delete/change and p/P paste
 which_key_hints = true  # show the leader-key hint overlay (Vim only)
 which_key_hint_mode = "sticky"  # timed | sticky
 which_key_hint_timeout_ms = 900  # how long timed hints stay visible (ms)
@@ -38,6 +38,7 @@ scroll_off = 0  # vim scrolloff — lines kept above/below the cursor (0 = off)
 time_format = "24h"  # clock format for the @time macro (12h or 24h)
 preview_max_width = 920  # max reading width for the preview (px)
 editor_max_width = 920  # max width of the editor column (px)
+completed_task_style = "none"  # none | strikethrough | gray | gray-strikethrough — style checked-task text
 line_number_mode = "relative"  # off | absolute | relative
 line_number_position = "text"  # text | edge
 word_wrap = true  # wrap long lines vs. scroll horizontally
@@ -71,6 +72,7 @@ calendar_week_start = "monday"  # monday | sunday | locale
 calendar_show_week_numbers = true  # show ISO week numbers in the calendar
 tasks_view_mode = "kanban"  # list | calendar | kanban
 kanban_group_by = "priority"  # status | priority | folder
+kanban_statuses = []  # custom-status Kanban columns, in order — e.g. ["backlog", "in_progress", "review", "done"]
 
 # Keymap overrides. Add or uncomment "<action.id>" = "<binding>" lines.
 # Binding syntax: "Mod+P" = Cmd/Ctrl+P, "Shift+Mod+K", "Ctrl+W", "Space",

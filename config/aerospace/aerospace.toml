@@ -198,6 +198,10 @@ if.app-id = "md.obsidian"
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
+if.app-id = "com.adibhanna.zennotes"
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
 if.app-id = "com.spotify.client"
 run = "move-node-to-workspace 4"
 

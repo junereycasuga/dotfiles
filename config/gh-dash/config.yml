@@ -86,9 +86,8 @@ keybindings:
     - key: C
       name: code review
       command: >
-        tmux new-window -n {{.RepoName}}
-        'nvim -c
-        ":silent Octo pr edit {{.PrNumber}}"'
+        tmux new-window -n {{.RepoName}} 'nvim -c ":silent Octo pr edit
+        {{.PrNumber}}"'
 repoPaths: {}
 theme:
   ui:
@@ -97,7 +96,7 @@ theme:
       showSeparator: true
       compact: false
 pager:
-  diff: "diffnav"
+  diff: "hunk pager"
 confirmQuit: false
 showAuthorIcons: true
 smartFilteringAtLaunch: true
