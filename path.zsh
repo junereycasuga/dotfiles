@@ -9,8 +9,7 @@ path=(
   /opt/homebrew/bin
   /usr/local/bin
   /usr/local/sbin
-  $HOME/.asdf/shims
-  $HOME/.asdf/bin
+
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
   $HOME/.fastlane/bin
@@ -18,6 +17,10 @@ path=(
   $HOME/.bin
   $path
 )
+
+# Strip inherited asdf paths (migrated to mise)
+path=("${(@)path:#$HOME/.asdf/shims}")
+path=("${(@)path:#$HOME/.asdf/bin}")
 
 # Where to find the zsh history
 export HISTFILE=${HOME}/.zsh_history

@@ -18,7 +18,7 @@ A comprehensive macOS dotfiles setup featuring modern development tools and conf
 - **Borders**: Colored window borders for enhanced visibility
 
 ### Development Environment
-- **asdf**: Version manager for Node.js, Go, Terraform, and Zig
+- **mise**: Version manager for Node.js, Go, Terraform, and Zig
 - **OrbStack**: Docker Desktop alternative
 - **Homebrew**: Package manager with comprehensive tool collection
 - **just**: Command runner for repeatable maintenance tasks
@@ -37,7 +37,7 @@ A comprehensive macOS dotfiles setup featuring modern development tools and conf
 
 ### Languages & Frameworks
 Pre-configured for:
-- **Go**: With asdf version management
+- **Go**: With mise version management
 - **Node.js**: With npm/yarn support
 - **Terraform**: With tflint for linting
 - **Zig**: Modern systems programming language
@@ -142,7 +142,7 @@ just shell-profile
 - ShellCheck for shell scripts
 - GNU Stow dry-runs for home and XDG config packages
 - Brewfile dependency check
-- asdf version resolution
+- mise version resolution
 - opencode config validation
 - Neovim headless startup
 - Interactive shell startup timing

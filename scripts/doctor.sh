@@ -41,7 +41,7 @@ check_required_tools() {
   info "Required Tools"
 
   local tools=(brew git stow zsh)
-  local optional_tools=(asdf just opencode shellcheck nvim tmux)
+  local optional_tools=(mise just opencode shellcheck nvim tmux)
   local tool
 
   for tool in "${tools[@]}"; do
@@ -102,20 +102,20 @@ check_brew() {
   fi
 }
 
-check_asdf() {
-  info "asdf"
+check_mise() {
+  info "mise"
 
-  if ! has asdf; then
-    warn "asdf unavailable; skipped .tool-versions check"
+  if ! has mise; then
+    warn "mise unavailable; skipped version check"
     return
   fi
 
-  if asdf current >/tmp/dotfiles-asdf-current.log 2>&1; then
-    pass "asdf versions resolved"
+  if mise current >/tmp/dotfiles-mise-current.log 2>&1; then
+    pass "mise versions resolved"
   else
-    warn "asdf reported unresolved versions"
+    warn "mise reported unresolved versions"
   fi
-  sed 's/^/  /' /tmp/dotfiles-asdf-current.log
+  sed 's/^/  /' /tmp/dotfiles-mise-current.log
 }
 
 check_opencode() {
@@ -158,7 +158,7 @@ main() {
   check_shell
   check_stow
   check_brew
-  check_asdf
+  check_mise
   check_opencode
   check_nvim
   check_startup_time

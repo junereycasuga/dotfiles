@@ -3,7 +3,7 @@
     "headroom": {
       "type": "local",
       "command": [
-        "/Users/junerey/.asdf/installs/python/3.12.9/bin/headroom",
+        "/Users/junerey/.local/share/mise/installs/python/3.12.9/bin/headroom",
         "mcp",
         "serve"
       ],

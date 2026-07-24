@@ -13,7 +13,7 @@ HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$DOTFILES
 
 autoload -Uz compinit
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null || print 0)
 if [[ $(date +'%j') != $updated_at ]]; then
   compinit -i
@@ -55,9 +55,6 @@ antidote load
 # aliases
 source $ZSH_CUSTOM/aliases.zsh
 
-if [[ -r ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh ]]; then
-  source ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
-fi
 
 if command -v terraform >/dev/null 2>&1; then
   autoload -U +X bashcompinit && bashcompinit
@@ -110,3 +107,4 @@ fi
 if command -v wt >/dev/null 2>&1; then
   eval "$(command wt config shell init zsh)"
 fi
+eval "$(mise activate zsh)"

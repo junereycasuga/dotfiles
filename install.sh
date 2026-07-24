@@ -56,14 +56,14 @@ EOF
     echo "  • tmux with modern plugins"
     echo "  • Zsh with Starship prompt and modern CLI tools"
     echo "  • AeroSpace window manager"
-    echo "  • Development languages via asdf (Go, Node.js, Terraform, Zig)"
+    echo "  • Development languages via mise (Go, Node.js, Terraform, Zig)"
     echo "  • Productivity applications and utilities"
     echo
     echo -e "${YELLOW}⚠️  This script will:${NC}"
     echo "  • Install/update Homebrew and packages"
     echo "  • Backup and replace your .zshrc"
     echo "  • Create symlinks for configuration files"
-    echo "  • Install asdf language plugins"
+    echo "  • Install language versions with mise"
     echo
 }
 
@@ -138,30 +138,20 @@ stow --restow -t ~ home
 stow --restow -t ~/.config config
 echo -e "${GREEN}✅ Configuration files symlinked${NC}"
 
-# Add ASDF plugins
-echo -e "${BLUE}🌐 Installing asdf language plugins...${NC}"
-require_command asdf
+# Install language versions with mise
+echo -e "${BLUE}🌐 Installing language versions with mise...${NC}"
+require_command mise
 
-echo -e "${YELLOW}  📦 Installing Go asdf plugin...${NC}"
-asdf plugin add golang https://github.com/asdf-community/asdf-golang.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Go plugin already installed${NC}"
+mise install
 
-echo -e "${YELLOW}  📦 Installing Zig asdf plugin...${NC}"
-asdf plugin add zig https://github.com/asdf-community/asdf-zig.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Zig plugin already installed${NC}"
-
-echo -e "${YELLOW}  📦 Installing Terraform asdf plugin...${NC}"
-asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Terraform plugin already installed${NC}"
-
-echo -e "${YELLOW}  📦 Installing Node.js asdf plugin...${NC}"
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2>/dev/null || echo -e "${YELLOW}    ℹ️  Node.js plugin already installed${NC}"
-
-echo -e "${GREEN}✅ Language plugins configured${NC}"
+echo -e "${GREEN}✅ Language versions configured${NC}"
 
 echo
 echo -e "${PURPLE}🎉 Installation completed successfully!${NC}"
 echo
 echo -e "${CYAN}📝 Next steps:${NC}"
 echo "  1. Restart your terminal or run: source ~/.zshrc"
-echo "  2. Install language versions with asdf (e.g., asdf install golang latest)"
+echo "  2. Install language versions with mise (e.g., mise install)"
 echo "  3. Configure your applications as needed"
 echo
 echo -e "${GREEN}🚀 Happy coding!${NC}"

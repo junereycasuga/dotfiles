@@ -39,7 +39,7 @@ brew "hstr" # Improved command history
 brew "httpie" # cURL with colors
 brew "shellcheck" # Shell script analysis tool
 brew "tflint" # Terraform linter
-brew "asdf" # Language version manager
+brew "mise" # Language version manager
 brew "antidote" # Zsh plugin manager
 brew "eza" # modern ls replacement
 brew "ripgrep" # grep replacement
