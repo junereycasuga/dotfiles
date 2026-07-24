@@ -40,10 +40,9 @@ config/k9s/clusters/
 .aider*
 tmp/
 
+*.log
+*.sock
+
 ## Herdr
-config/herdr/herdr-client.log
-config/herdr/herdr-client.sock
-config/herdr/herdr-server.log
-config/herdr/herdr.sock
 config/herdr/session.json
 config/herdr/release-notes.json
