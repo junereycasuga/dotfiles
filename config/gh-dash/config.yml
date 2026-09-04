@@ -86,8 +86,8 @@ keybindings:
     - key: C
       name: code review
       command: >
-        tmux new-window -n {{.RepoName}} 'nvim -c ":silent Octo pr edit
-        {{.PrNumber}}"'
+        PANE=$(herdr tab create --label "{{.RepoName}}-{{.PrNumber}}" --cwd "{{.RepoPath}}" --focus | jq -r '.result.root_pane.pane_id');
+        herdr pane run "$PANE" "tuicr pr {{.PrNumber}}"
 repoPaths: {}
 theme:
   ui:
