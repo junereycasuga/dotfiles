@@ -151,7 +151,7 @@ alt-shift-semicolon = 'mode service'
 # Open applications
 alt-g = ['exec-and-forget open -a "Ghostty"']
 alt-b = ['exec-and-forget open -a "Zen"']
-alt-s = ['exec-and-forget open -a "Spark Desktop"']
+alt-e = ['exec-and-forget open -a "Spark Desktop"']
 alt-c = ['exec-and-forget open -a "Calendar"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
 alt-m = ['exec-and-forget open -a "Spotify"']
