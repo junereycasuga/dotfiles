@@ -1,7 +1,7 @@
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
+# Config version for compatibility and deprecations
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+# Fallback value (if you omit the key): config-version = 1
+config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
@@ -10,15 +10,19 @@ after-startup-command = [
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=6.0 blacklist="iPhone Mirroring"'
 ]
 
+# Start AeroSpace at login
+start-at-login = true 
+
+# Automatically reload the config when the config file is saved
+# After setting this to true, reload once manually to start the auto-reloading
+auto-reload-config = true
+
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
-
-# Start AeroSpace at login
-start-at-login = true 
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -47,6 +51,38 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# 'on-window-detected' callback: single array of callback objects.
+# 'if' is a shell expression (test commands OR'ed with ||);
+# first matching object runs its 'run' and stops further processing.
+# See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
+on-window-detected = [
+  {
+    if = 'test %{app-bundle-id} = com.mitchellh.ghostty || test %{app-bundle-id} = dev.zed.Zed',
+    run = 'move-node-to-workspace 1',
+  },
+  {
+    if = 'test %{app-bundle-id} = app.zen-browser.zen',
+    run = 'move-node-to-workspace 2',
+  },
+  {
+    if = 'test %{app-bundle-id} = md.obsidian || test %{app-bundle-id} = com.adibhanna.zennotes',
+    run = 'move-node-to-workspace 3',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.spotify.client',
+    run = 'move-node-to-workspace 4',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap || test %{app-bundle-id} = com.microsoft.teams2',
+    run = 'move-node-to-workspace 5',
+  },
+  {
+    # Floating apps (Spark Desktop: '~=' matches both App Store and standalone bundle IDs)
+    if = 'test %{app-bundle-id} = com.1password.1password || test %{app-bundle-id} ~= com[.]readdle[.]SparkDesktop || test %{app-bundle-id} = com.apple.iCal || test %{app-bundle-id} = cc.ffitch.shottr',
+    run = 'layout floating',
+  },
+]
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -180,55 +216,3 @@ alt-shift-l = ['join-with right', 'mode main']
 4 = ['main']
 5 = ['secondary']
 6 = ['secondary']
-
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = "dev.zed.Zed"
-run = "move-node-to-workspace 1"
-
-[[on-window-detected]]
-if.app-id = "app.zen-browser.zen"
-run = "move-node-to-workspace 2"
-
-[[on-window-detected]]
-if.app-id = "md.obsidian"
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = "com.adibhanna.zennotes"
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = "com.spotify.client"
-run = "move-node-to-workspace 4"
-
-[[on-window-detected]]
-if.app-id = "com.tinyspeck.slackmacgap"
-run = "move-node-to-workspace 5"
-
-[[on-window-detected]]
-if.app-id ="com.microsoft.teams2"
-run = "move-node-to-workspace 5"
-
-[[on-window-detected]]
-if.app-id = "com.1password.1password"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.readdle.SparkDesktop.appstore"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.readdle.SparkDesktop"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.apple.iCal"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "cc.ffitch.shottr"
-run = "layout floating"
