@@ -58,7 +58,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
 on-window-detected = [
   {
-    if = 'test %{app-bundle-id} = com.mitchellh.ghostty || test %{app-bundle-id} = dev.zed.Zed',
+    if = 'test %{app-bundle-id} = com.mitchellh.ghostty || test %{app-bundle-id} = dev.zed.Zed || test %{app-bundle-id} = com.superlogical.rex',
     run = 'move-node-to-workspace 1',
   },
   {
@@ -192,6 +192,7 @@ alt-c = ['exec-and-forget open -a "Calendar"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
 alt-m = ['exec-and-forget open -a "Spotify"']
 alt-n = ['exec-and-forget open -a "ZenNotes"']
+alt-r = ['exec-and-forget open -a "Rex Beta"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
