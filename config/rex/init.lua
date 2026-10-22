@@ -1,5 +1,7 @@
 -- TABS --
 rex.bind("ctrl+space>c", "client.tab.new")
+rex.bind("ctrl+space>n", "client.tab.next")
+rex.bind("ctrl+space>p", "client.tab.previous")
 
 -- PANES --
 rex.bind("ctrl+space>shift+5", "pane.split", { direction = "right" })
