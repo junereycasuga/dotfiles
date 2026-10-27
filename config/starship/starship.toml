@@ -1,3 +1,97 @@
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$nats\
+$directory\
+$vcs\
+$vcsh\
+$docker_context\
+$package\
+$bun\
+$c\
+$cmake\
+$cobol\
+$cpp\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
+$gleam\
+$golang\
+$gradle\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$maven\
+$mojo\
+$nim\
+$nodejs\
+$ocaml\
+$odin\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$xmake\
+$zig\
+$buf\
+$guix_shell\
+$nix_shell\
+$conda\
+$pixi\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$netns\
+$os\
+$shell\
+$character"""
+
 [character]
 success_symbol = '[󰁔](bold green)'
 error_symbol = '[✗](bold red)'
@@ -71,6 +165,30 @@ ssh_symbol = " "
 
 [java]
 symbol = " "
+
+[vcs]
+order = ["jj","git"]
+
+[jj_bookmark]
+ignore_names = ["main", "master"]
+diverged_symbol = "⇕"
+
+[jj_change]
+format = "($change:$commit) "
+
+[jj_metrics]
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[jj_status]
+conflicted = '🏳'
+description_present = ""
+hidden = '🥷'
+immutable = '🔒'
+added = '📦'
+deleted = '🗑'
+modified = '📝'
+renamed = '👅'
 
 [julia]
 symbol = " "
