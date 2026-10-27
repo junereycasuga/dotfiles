@@ -21,6 +21,12 @@ rex.bind("resize/l", "pane.resize", { direction = "right" })
 rex.bind("resize/k", "pane.resize", { direction = "up" })
 rex.bind("resize/j", "pane.resize", { direction = "down" })
 
+-- PANE MOVEMENT --
+rex.bind("ctrl+space>shift+h", "pane.move", { direction = "left" })
+rex.bind("ctrl+space>shift+l", "pane.move", { direction = "right" })
+rex.bind("ctrl+space>shift+k", "pane.move", { direction = "up" })
+rex.bind("ctrl+space>shift+j", "pane.move", { direction = "down" })
+
 -- Hold shift for bigger steps
 rex.bind("resize/shift+h", "pane.resize", {
   direction = "left",
