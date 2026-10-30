@@ -12,10 +12,17 @@ HIST_STAMPS="dd/mm/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES
 
+# zsh-completions: Homebrew on macOS, git clone at ~/.zsh-completions on Linux
+# (see install-linux.sh)
+if [[ -d $HOME/.zsh-completions/src ]]; then
+  fpath=($HOME/.zsh-completions/src $fpath)
+fi
+
 autoload -Uz compinit
 
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null || print 0)
-if [[ $(date +'%j') != $updated_at ]]; then
+# Regenerate the completion dump once a day. `find -mmin` works on both
+# BSD (macOS) and GNU (Linux), unlike `stat -f`.
+if [[ ! -f ~/.zcompdump ]] || [[ -n $(find ~/.zcompdump -mmin +1440 2>/dev/null) ]]; then
   compinit -i
 else
   compinit -C -i
@@ -80,9 +87,11 @@ fi
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .ti"
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .ti"
+fi
 
 export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
 

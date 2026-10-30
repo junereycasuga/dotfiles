@@ -40,7 +40,8 @@ run_check() {
 check_required_tools() {
   info "Required Tools"
 
-  local tools=(brew git stow zsh)
+  local tools=(git stow zsh)
+  [[ $(uname -s) == "Darwin" ]] && tools+=(brew)
   local optional_tools=(mise just opencode shellcheck nvim tmux)
   local tool
 
@@ -67,9 +68,9 @@ check_shell() {
   run_check "zsh config syntax" zsh -n "$ROOT/home/.zprofile" "$ROOT/home/.zshrc" "$ROOT/aliases.zsh" "$ROOT/path.zsh"
 
   if has shellcheck; then
-    run_check "install.sh shellcheck" shellcheck "$ROOT/install.sh"
+    run_check "install scripts shellcheck" shellcheck "$ROOT/install.sh" "$ROOT/install-linux.sh"
   else
-    warn "shellcheck unavailable; skipped install.sh lint"
+    warn "shellcheck unavailable; skipped install script lint"
   fi
 }
 

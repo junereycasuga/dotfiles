@@ -55,6 +55,44 @@ Pre-configured for:
 
 If `just` is not available yet, run `./scripts/doctor.sh` directly after installation.
 
+## Linux Remote Machine Setup 🐧 (JUNIX)
+
+The same repository works on a Debian/Ubuntu remote dev machine/VPC ("JUNIX")
+and shares the zsh configuration (`.zshrc`, `.zprofile`, `aliases.zsh`,
+`path.zsh`, and the Antidote plugin list) with the Mac. Platform-specific bits
+(Homebrew, OrbStack, AeroSpace, `pbcopy`, the zcompdump freshness check) are
+guarded per-OS. There is deliberately **no Homebrew on Linux** — packages come
+from apt.
+
+1. Clone this repo to `~/.dotfiles`
+2. Run `./install-linux.sh` to start the installation
+3. Restart your terminal to load the shell changes
+4. Run `just doctor` to verify the setup
+
+What the Linux installer does:
+- Installs apt packages: autoconf, ack, zlib, grep, libyaml, tree, zsh,
+  openssl, neovim, jq, httpie, ripgrep, 1password-cli, zoxide, fzf, stow, bat
+  (plus `ack-grep`/`zoxide` fallbacks for older Debian releases)
+- Adds the official 1Password apt repository
+- Installs mise via its official install script — mise then manages eza, atuin,
+  carapace, worktrunk, lazygit, yq, and starship through its `github:` release
+  backend, declared in `config/mise/config.linux.toml`
+- Clones antidote (zsh plugin manager) and zsh-completions (no apt package)
+- Bridges Debian's `batcat` binary to `bat` in `~/.bin`
+- Stows the same `home` and `config` packages as macOS
+- Installs language versions with mise and sets zsh as the default shell
+
+Linux-only mise tools live in `config/mise/config.linux.toml`, which loads only
+when `MISE_ENV` contains `linux` (exported in `path.zsh`). On macOS the same
+tools come from Homebrew, so the file never installs anything there.
+
+Homebrew-dependent commands (`just brew-check`, `just brew-outdated`,
+`just brew-sync`, the `Brewfile`) are macOS-only. `just doctor` only requires
+`brew` on macOS.
+
+Note: mise compiles Python/Rust from source — if `mise install` fails, install
+build tools first (the installer prints the exact apt packages).
+
 ## Configuration Management
 
 This setup uses **GNU Stow** for symlink management with a two-tier structure:

@@ -14,13 +14,13 @@ check: shell-check opencode-check brew-check stow-check
 # Validate shell files and lint shell scripts
 shell-check:
     zsh -n home/.zprofile home/.zshrc aliases.zsh path.zsh
-    shellcheck install.sh scripts/doctor.sh
+    shellcheck install.sh install-linux.sh scripts/doctor.sh
 
 # Validate resolved opencode configuration
 opencode-check:
     opencode debug config >/dev/null
 
-# Check Brewfile dependencies without requiring upgrades
+# Check Brewfile dependencies without requiring upgrades (macOS only — no Homebrew on Linux)
 brew-check:
     HOMEBREW_NO_AUTO_UPDATE=1 brew bundle check --no-upgrade --verbose --file Brewfile
 
@@ -43,6 +43,10 @@ restow:
 # Run the interactive macOS bootstrap installer
 install:
     ./install.sh
+
+# Run the interactive Linux bootstrap installer
+install-linux:
+    ./install-linux.sh
 
 # Install missing Brewfile dependencies
 brew-sync:

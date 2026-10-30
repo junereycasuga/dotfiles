@@ -14,10 +14,12 @@ export KUBE_EDITOR=${KUBE_EDITOR:-nvim}
 export AIDER_EDITOR=${AIDER_EDITOR:-nvim}
 export RAINFROG_CONFIG=${RAINFOG_CONFIG:-$HOME/.config/rainfrog}
 
-# Added by OrbStack: command-line tools and integration
-source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || true
+if [[ $(uname -s) == "Darwin" ]]; then
+  # Added by OrbStack: command-line tools and integration
+  source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || true
 
-path=(
-  /Applications/Obsidian.app/Contents/MacOS
-  $path
-)
+  path=(
+    /Applications/Obsidian.app/Contents/MacOS
+    $path
+  )
+fi

@@ -1,0 +1,17 @@
+# Linux-only (JUNIX) tools, managed by mise's `github:` backend (GitHub release
+# binaries with automatic OS/arch/glibc detection and checksum verification).
+#
+# This file only loads when MISE_ENV contains "linux" — exported in path.zsh's
+# Linux branch. On macOS the same tools come from Homebrew instead, so nothing
+# here installs on the Mac.
+#
+# Pin versions like the shared config.toml; bump with `mise upgrade`.
+
+[tools]
+"github:eza-community/eza" = { version = "0.23.5", matching_regex = "^eza_(x86_64|aarch64)-unknown-linux-gnu\\.tar\\.gz$" }
+"github:atuinsh/atuin" = "18.24.3"
+"github:carapace-sh/carapace-bin" = "1.8.1"
+"github:jesseduffield/lazygit" = "0.66.2"
+"github:max-sixty/worktrunk" = "0.81.0"
+"github:mikefarah/yq" = "4.54.1"
+"github:starship/starship" = "1.27.0"

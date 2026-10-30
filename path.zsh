@@ -3,13 +3,33 @@
 # referenced in my aliases.zsh file directly.
 # export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-# Local bin directories before anything else
+# Platform system dirs: Homebrew on macOS, standard prefixes on Linux
+# (Linux has no Homebrew — packages come from the distro, see install-linux.sh)
 typeset -U path PATH
-path=(
-  /opt/homebrew/bin
-  /usr/local/bin
-  /usr/local/sbin
+if [[ $(uname -s) == "Darwin" ]]; then
+  brew_prefix=/opt/homebrew
+  [[ -d $brew_prefix/bin ]] || brew_prefix=/usr/local
+  path=(
+    $brew_prefix/bin
+    $brew_prefix/sbin
+    /usr/local/bin
+    /usr/local/sbin
+    $path
+  )
+  unset brew_prefix
+else
+  # Activates ~/.config/mise/config.linux.toml (Linux-only mise tools)
+  export MISE_ENV=linux
+  path=(
+    /usr/local/bin
+    /usr/local/sbin
+    $HOME/.local/bin
+    $path
+  )
+fi
 
+# Local bin directories before anything else
+path=(
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
   $HOME/.fastlane/bin
@@ -29,10 +49,13 @@ export HISTFILE=${HOME}/.zsh_history
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
-if [[ -d /opt/homebrew/opt/zlib ]]; then
-  zlib_prefix=/opt/homebrew/opt/zlib
-elif [[ -d /usr/local/opt/zlib ]]; then
-  zlib_prefix=/usr/local/opt/zlib
+# Homebrew zlib flags for building Erlang on macOS
+if [[ $(uname -s) == "Darwin" ]]; then
+  if [[ -d /opt/homebrew/opt/zlib ]]; then
+    zlib_prefix=/opt/homebrew/opt/zlib
+  elif [[ -d /usr/local/opt/zlib ]]; then
+    zlib_prefix=/usr/local/opt/zlib
+  fi
 fi
 
 if [[ -n ${zlib_prefix:-} ]]; then

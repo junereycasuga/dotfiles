@@ -1,8 +1,19 @@
 # Shortcuts
-alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias reloadcli="source $HOME/.zshrc"
-alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --icons'
+
+if [[ $(uname -s) == "Darwin" ]]; then
+  alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
+  alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+elif command -v xclip >/dev/null 2>&1; then
+  alias copyssh="xclip -selection clipboard < $HOME/.ssh/id_rsa.pub"
+elif command -v xsel >/dev/null 2>&1; then
+  alias copyssh="xsel --clipboard < $HOME/.ssh/id_rsa.pub"
+fi
+if command -v eza >/dev/null 2>&1; then
+  alias ll='eza --long --header --git --links --group-directories-first --color-scale --time-style=iso --grid --icons'
+else
+  alias ll='ls -lah'
+fi
 alias c="clear"
 
 alias ~="cd ~"
@@ -53,10 +64,12 @@ alias t='terraform'
 
 alias db='rainfrog'
 
-aero_windows() {
-  aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
-}
-alias ff='aero_windows'
+if [[ $(uname -s) == "Darwin" ]]; then
+  aero_windows() {
+    aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
+  }
+  alias ff='aero_windows'
+fi
 
 # HSTR configuration - add this to ~/.bashrc
 alias hh=hstr                    # hh to be alias for hstr
