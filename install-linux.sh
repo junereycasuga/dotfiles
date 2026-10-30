@@ -78,11 +78,13 @@ confirm_installation
 echo -e "${BLUE}📦 Installing system packages...${NC}"
 
 # 1Password official apt repository (https://developer.1password.com/docs/cli/get-started)
-if [[ ! -f /etc/apt/sources.list.d/1password.list ]]; then
+# Note: the repo URL embeds the arch path and uses suite "stable" —
+# the older "suite = arch" layout no longer resolves a Release file.
+if ! grep -q 'stable main' /etc/apt/sources.list.d/1password.list 2>/dev/null; then
     echo -e "${BLUE}🔑 Adding 1Password apt repository...${NC}"
     curl -sS https://downloads.1password.com/linux/keys/1password.asc \
         | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian $(dpkg --print-architecture) main" \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" \
         | sudo tee /etc/apt/sources.list.d/1password.list >/dev/null
     sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/ /usr/share/debsig/keyrings/AC2D62742012EA22
     curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol \
