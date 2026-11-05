@@ -152,18 +152,50 @@ else
     echo -e "${GREEN}✅ zsh-completions already cloned${NC}"
 fi
 
+# Repo root — the guards below ensure we never modify files inside the
+# repository itself, even when a target path resolves through a stray
+# symlink into it (a previous manual setup did exactly this on JUNIX and
+# prepare_package renamed repository files to *.backup through the link)
+REPO_ROOT="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+path_in_repo() {
+    case "$1" in
+        "$REPO_ROOT" | "$REPO_ROOT"/*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# Remove the FIRST symlink component of $1 walking up toward $2. A plain
+# rm/mv on a path that traverses a symlink would hit the link's TARGET
+# (possibly a file inside this repo), so unlink only the shallowest link.
+remove_first_symlink() {
+    local cur="$1" root="$2"
+    while :; do
+        case "$cur" in
+            "$root") return 1 ;;
+            "$root"/*) ;;
+            *) return 1 ;;
+        esac
+        if [[ -L "$cur" ]]; then
+            rm "$cur"
+            return 0
+        fi
+        cur="${cur%/*}"
+    done
+}
+
 # Portable readlink -f (macOS lacks it): resolve a path through symlinks
 resolve_path() {
-    local path="$1" dir
-    while [[ -L "$path" ]]; do
-        dir="$(cd -P "$(dirname "$path")" >/dev/null 2>&1 && pwd)"
-        [[ -z "$dir" ]] && { echo "$path"; return; }  # unresolvable: return as-is
-        path="$(readlink "$path")"
-        [[ "$path" != /* ]] && path="$dir/$path"
+    local cur="$1" dir
+    while [[ -L "$cur" ]]; do
+        dir="$(cd -P "$(dirname "$cur")" >/dev/null 2>&1 && pwd)"
+        [[ -z "$dir" ]] && { echo "$cur"; return; }  # unresolvable: return as-is
+        cur="$(readlink "$cur")"
+        [[ "$cur" != /* ]] && cur="$dir/$cur"
     done
-    dir="$(cd -P "$(dirname "$path")" >/dev/null 2>&1 && pwd)"
-    [[ -z "$dir" ]] && { echo "$path"; return; }
-    echo "$dir/$(basename "$path")"
+    dir="$(cd -P "$(dirname "$cur")" >/dev/null 2>&1 && pwd)"
+    [[ -z "$dir" ]] && { echo "$cur"; return; }
+    echo "$dir/$(basename "$cur")"
 }
 
 # Back up existing targets that would conflict with stow (real files, stray
@@ -183,8 +215,14 @@ prepare_package() {
                 continue  # stow will create it
             elif [[ -d "$target" && ! -L "$target" ]]; then
                 continue  # real dir: stow links files inside it
-            elif [[ -L "$target" ]] && [[ "$(resolve_path "$target")" == "$resolved_pkg" ]]; then
-                continue  # stow-owned from a previous run
+            elif [[ -L "$target" ]] && path_in_repo "$(resolve_path "$target")"; then
+                # Stray directory symlink into the repo (e.g. left over from
+                # a previous manual setup). Remove the LINK only — never
+                # repository files through it — and let stow adopt the
+                # directory properly.
+                echo -e "${YELLOW}📋 Removing stray symlink into the repo: $target${NC}"
+                rm "$target"
+                continue
             fi
             echo -e "${RED}❌ $target exists and is not managed by this dotfiles repo — move it away before continuing.${NC}"
             exit 1
@@ -198,12 +236,25 @@ prepare_package() {
         fi
 
         if [[ -L "$target" ]]; then
-            if [[ "$(resolve_path "$target")" == "$resolved_pkg" ]]; then
-                continue  # stow-owned link from a previous run
+            resolved_target="$(resolve_path "$target")"
+            if [[ "$resolved_target" == "$resolved_pkg" ]]; then
+                continue  # stow-owned file link from a previous run
+            elif path_in_repo "$resolved_target"; then
+                echo -e "${YELLOW}📋 Removing stray symlink into the repo: $target${NC}"
+                rm "$target"
+                continue
             fi
             echo -e "${YELLOW}📋 Found existing symlink $target, backing up to $target.backup...${NC}"
             mv "$target" "$target.backup"
         elif [[ -f "$target" ]]; then
+            if path_in_repo "$(resolve_path "$target")"; then
+                # Regular file reached through a symlinked parent into the
+                # repo: unlink the first symlink component. A plain rm here
+                # would delete repository content.
+                echo -e "${YELLOW}📋 Removing stray symlink into the repo: $target${NC}"
+                remove_first_symlink "$target" "$target_root"
+                continue
+            fi
             echo -e "${YELLOW}📋 Found existing $target, backing up to $target.backup...${NC}"
             cp "$target" "$target.backup"
             rm "$target"
