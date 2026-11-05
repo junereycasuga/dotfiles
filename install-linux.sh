@@ -240,7 +240,7 @@ echo -e "${BLUE}🐚 Setting zsh as the default shell...${NC}"
 ZSH_PATH="$(command -v zsh)"
 if [[ "$SHELL" != "$ZSH_PATH" ]]; then
     if grep -q "$ZSH_PATH" /etc/shells 2>/dev/null; then
-        chsh -s "$ZSH_PATH"
+        sudo chsh -s "$ZSH_PATH"
         echo -e "${GREEN}✅ Default shell changed to zsh${NC}"
     else
         echo -e "${YELLOW}⚠️  $ZSH_PATH not in /etc/shells — add it, then run: chsh -s $ZSH_PATH${NC}"
