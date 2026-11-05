@@ -79,7 +79,9 @@ What the Linux installer does:
   backend, declared in `config/mise/config.linux.toml`
 - Clones antidote (zsh plugin manager) and zsh-completions (no apt package)
 - Bridges Debian's `batcat` binary to `bat` in `~/.bin`
-- Stows the same `home` and `config` packages as macOS
+- Stows the same `home` and `config` packages as macOS — except `aerospace`,
+  which is macOS-only (its config autostarts the `borders` tool), so the
+  Linux stow skips it (`stow --ignore=aerospace`)
 - Installs language versions with mise and sets zsh as the default shell
 
 Linux-only mise tools live in `config/mise/config.linux.toml`, which loads only

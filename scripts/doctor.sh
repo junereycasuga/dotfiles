@@ -84,7 +84,12 @@ check_stow() {
 
   mkdir -p "$HOME/.config"
   run_check "home package dry-run" stow --no --restow -d "$ROOT" -t "$HOME" home
-  run_check "config package dry-run" stow --no --restow -d "$ROOT" -t "$HOME/.config" config
+  if [[ $(uname -s) == "Linux" ]]; then
+    # aerospace is macOS-only (its config autostarts borders) — never stow it on Linux
+    run_check "config package dry-run" stow --no --restow --ignore=aerospace -d "$ROOT" -t "$HOME/.config" config
+  else
+    run_check "config package dry-run" stow --no --restow -d "$ROOT" -t "$HOME/.config" config
+  fi
 }
 
 check_brew() {

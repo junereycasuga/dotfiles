@@ -224,7 +224,10 @@ echo -e "${BLUE}🔗 Creating configuration symlinks...${NC}"
 require_command stow
 mkdir -p "$HOME/.config"
 stow --restow -t ~ home
-stow --restow -t ~/.config config
+# aerospace is macOS-only (its config also autostarts borders) — never stow it on Linux.
+# Remove the stale symlink if a previous run created one.
+[[ -L $HOME/.config/aerospace ]] && rm "$HOME/.config/aerospace"
+stow --restow -t ~/.config --ignore=aerospace config
 echo -e "${GREEN}✅ Configuration files symlinked${NC}"
 
 # Install language versions and Linux-only CLI tools (config.linux.toml) with mise.

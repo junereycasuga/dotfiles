@@ -32,13 +32,13 @@ brew-outdated:
 stow-check:
     mkdir -p "$HOME/.config"
     stow --no --restow -d . -t "$HOME" home
-    stow --no --restow -d . -t "$HOME/.config" config
+    stow --no --restow -d . -t "$HOME/.config" {{ if os() == "linux" { "--ignore=aerospace" } else { "" } }} config
 
 # Recreate dotfile symlinks with GNU Stow
 restow:
     mkdir -p "$HOME/.config"
     stow --restow -d . -t "$HOME" home
-    stow --restow -d . -t "$HOME/.config" config
+    stow --restow -d . -t "$HOME/.config" {{ if os() == "linux" { "--ignore=aerospace" } else { "" } }} config
 
 # Run the interactive macOS bootstrap installer
 install:
