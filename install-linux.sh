@@ -152,19 +152,21 @@ else
     echo -e "${GREEN}✅ zsh-completions already cloned${NC}"
 fi
 
-# Back up current .zshrc if found and is not a symlink
+# Back up any existing real files that stow would replace with symlinks
+# (e.g. ~/.gitconfig, ~/.zshrc) so stow never aborts on conflicts
 echo -e "${BLUE}🔧 Configuring shell files...${NC}"
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-  echo -e "${YELLOW}📋 Found existing .zshrc, backing up to .zshrc.backup...${NC}"
-  cp "$HOME/.zshrc" "$HOME/.zshrc.backup"
-fi
-
-if [ -L "$HOME/.zshrc" ] || [ -f "$HOME/.zshrc" ]; then
-  rm "$HOME/.zshrc"
-elif [ -e "$HOME/.zshrc" ]; then
-  echo -e "${RED}❌ $HOME/.zshrc exists and is not a file or symlink. Move it before continuing.${NC}"
-  exit 1
-fi
+for pkg_file in home/.[!.]*; do
+    [[ -e "$pkg_file" ]] || continue
+    target="$HOME/$(basename "$pkg_file")"
+    if [[ -f "$target" && ! -L "$target" ]]; then
+        echo -e "${YELLOW}📋 Found existing $(basename "$target"), backing up to $(basename "$target").backup...${NC}"
+        cp "$target" "$target.backup"
+        rm "$target"
+    elif [[ -d "$target" && ! -L "$target" ]]; then
+        echo -e "${RED}❌ $target is a directory — move it away before continuing.${NC}"
+        exit 1
+    fi
+done
 
 # Symlink dotfiles using GNU Stow (same packages as macOS)
 echo -e "${BLUE}🔗 Creating configuration symlinks...${NC}"
