@@ -53,7 +53,7 @@ EOF
     echo -e "${YELLOW}⚠️  This script will:${NC}"
     echo "  • Install system packages (sudo required)"
     echo "  • Add the 1Password apt repository"
-    echo "  • Backup and replace your .zshrc"
+    echo "  • Back up conflicting dotfiles (~/.gitconfig, ~/.zshrc, ~/.config/*)"
     echo "  • Create symlinks for configuration files"
     echo
 }
@@ -152,21 +152,72 @@ else
     echo -e "${GREEN}✅ zsh-completions already cloned${NC}"
 fi
 
-# Back up any existing real files that stow would replace with symlinks
-# (e.g. ~/.gitconfig, ~/.zshrc) so stow never aborts on conflicts
+# Portable readlink -f (macOS lacks it): resolve a path through symlinks
+resolve_path() {
+    local path="$1" dir
+    while [[ -L "$path" ]]; do
+        dir="$(cd -P "$(dirname "$path")" >/dev/null 2>&1 && pwd)"
+        [[ -z "$dir" ]] && { echo "$path"; return; }  # unresolvable: return as-is
+        path="$(readlink "$path")"
+        [[ "$path" != /* ]] && path="$dir/$path"
+    done
+    dir="$(cd -P "$(dirname "$path")" >/dev/null 2>&1 && pwd)"
+    [[ -z "$dir" ]] && { echo "$path"; return; }
+    echo "$dir/$(basename "$path")"
+}
+
+# Back up existing targets that would conflict with stow (real files, stray
+# symlinks, unexpected directories) so stow never aborts. Targets already
+# owned by stow from a previous run are left alone.
+prepare_package() {
+    local pkg_dir="$1" target_root="$2"
+    local pkg_file rel target resolved_pkg
+    while IFS= read -r pkg_file; do
+        rel="${pkg_file#"$pkg_dir"/}"
+        [[ "$rel" == "$pkg_file" ]] && continue  # the package root itself
+        target="$target_root/$rel"
+        resolved_pkg="$(resolve_path "$pkg_file")"
+
+        if [[ -d "$pkg_file" && ! -L "$pkg_file" ]]; then
+            if [[ ! -e "$target" && ! -L "$target" ]]; then
+                continue  # stow will create it
+            elif [[ -d "$target" && ! -L "$target" ]]; then
+                continue  # real dir: stow links files inside it
+            elif [[ -L "$target" ]] && [[ "$(resolve_path "$target")" == "$resolved_pkg" ]]; then
+                continue  # stow-owned from a previous run
+            fi
+            echo -e "${RED}❌ $target exists and is not managed by this dotfiles repo — move it away before continuing.${NC}"
+            exit 1
+        fi
+
+        # Skip files reachable through a stow-owned directory symlink
+        # (re-run: the "target" lives in the repo itself)
+        if [[ -L "${target%/*}" ]] \
+            && [[ "$(resolve_path "${target%/*}")" == "$(resolve_path "${pkg_file%/*}")" ]]; then
+            continue
+        fi
+
+        if [[ -L "$target" ]]; then
+            if [[ "$(resolve_path "$target")" == "$resolved_pkg" ]]; then
+                continue  # stow-owned link from a previous run
+            fi
+            echo -e "${YELLOW}📋 Found existing symlink $target, backing up to $target.backup...${NC}"
+            mv "$target" "$target.backup"
+        elif [[ -f "$target" ]]; then
+            echo -e "${YELLOW}📋 Found existing $target, backing up to $target.backup...${NC}"
+            cp "$target" "$target.backup"
+            rm "$target"
+        elif [[ -e "$target" ]]; then
+            echo -e "${RED}❌ $target exists and is not a file or symlink. Move it before continuing.${NC}"
+            exit 1
+        fi
+    done < <(find "$pkg_dir" \( -type d -o -type f -o -type l \) | sort)
+}
+
+# Back up conflicting dotfiles from both stow packages before linking
 echo -e "${BLUE}🔧 Configuring shell files...${NC}"
-for pkg_file in home/.[!.]*; do
-    [[ -e "$pkg_file" ]] || continue
-    target="$HOME/$(basename "$pkg_file")"
-    if [[ -f "$target" && ! -L "$target" ]]; then
-        echo -e "${YELLOW}📋 Found existing $(basename "$target"), backing up to $(basename "$target").backup...${NC}"
-        cp "$target" "$target.backup"
-        rm "$target"
-    elif [[ -d "$target" && ! -L "$target" ]]; then
-        echo -e "${RED}❌ $target is a directory — move it away before continuing.${NC}"
-        exit 1
-    fi
-done
+prepare_package home "$HOME"
+prepare_package config "$HOME/.config"
 
 # Symlink dotfiles using GNU Stow (same packages as macOS)
 echo -e "${BLUE}🔗 Creating configuration symlinks...${NC}"
