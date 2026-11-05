@@ -1,6 +1,10 @@
 # Path to your dotfiles installation.
 export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
 
+# This file is zsh-only — bail out quietly instead of printing confusing
+# errors if it is ever sourced from bash or another POSIX shell.
+[[ -z ${ZSH_VERSION:-} ]] && return 0
+
 # Set nvim as default editor
 export EDITOR=${EDITOR:-nvim}
 export KUBE_EDITOR=${KUBE_EDITOR:-nvim}
