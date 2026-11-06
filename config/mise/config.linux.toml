@@ -8,6 +8,9 @@
 # Pin versions like the shared config.toml; bump with `mise upgrade`.
 
 [tools]
+# apt's fzf (0.44 on Ubuntu 24.04) predates the --zsh integration flag;
+# the mise shim shadows /usr/bin/fzf
+"github:junegunn/fzf" = "0.74.5"
 # apt's neovim (0.9.5) is too old for this config — the mise shim shadows /usr/bin/nvim
 "github:neovim/neovim" = "0.12.6"
 "github:eza-community/eza" = { version = "0.23.5", matching_regex = "^eza_(x86_64|aarch64)-unknown-linux-gnu\\.tar\\.gz$" }

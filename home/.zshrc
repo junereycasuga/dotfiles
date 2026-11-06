@@ -60,6 +60,12 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 # paths
 source $ZSH_CUSTOM/path.zsh
 
+# Activate mise early so its shims (starship, fzf, atuin, zoxide, ...) are on
+# PATH before the tool init blocks below run their command -v checks
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
@@ -87,8 +93,9 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
-# FZF
-if command -v fzf >/dev/null 2>&1; then
+# FZF (the --zsh integration flag requires fzf >= 0.48; distro packages
+# can be older, so gate on the flag actually being supported)
+if command -v fzf >/dev/null 2>&1 && fzf --help 2>&1 | grep -q -- '--zsh'; then
   eval "$(fzf --zsh)"
 fi
 if command -v fd >/dev/null 2>&1; then
@@ -120,4 +127,3 @@ fi
 if command -v wt >/dev/null 2>&1; then
   eval "$(command wt config shell init zsh)"
 fi
-eval "$(mise activate zsh)"
