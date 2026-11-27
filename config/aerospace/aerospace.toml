@@ -192,7 +192,7 @@ alt-c = ['exec-and-forget open -a "Calendar"']
 alt-o = ['exec-and-forget open -a "Obsidian"']
 alt-m = ['exec-and-forget open -a "Spotify"']
 alt-n = ['exec-and-forget open -a "ZenNotes"']
-alt-r = ['exec-and-forget open -a "Rex Beta"']
+alt-r = ['exec-and-forget open -a "Rex"']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

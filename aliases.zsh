@@ -59,11 +59,6 @@ alias gst='git status'
 # Vim
 alias v="nvim"
 
-# Rex: restart the local server (kills everything in Rex, then launchd brings
-# the server back with session persistence and restores the layout + agents).
-# Prefer this over the app's "Restart Server…", which drops --state-dir.
-alias rex-restart='rex server stop'
-
 # Terraform
 alias t='terraform'
 
